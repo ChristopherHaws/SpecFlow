@@ -11,6 +11,7 @@ namespace TechTalk.SpecFlow.Generator.Project
     {
         public ProjectSettings ProjectSettings { get; set; }
         public SpecFlowProjectConfiguration Configuration { get; set; }
+        public ProjectNuGetInfo ProjectNuGetInfo { get; set; }
         public List<FeatureFileInput> FeatureFiles { get; private set; }
 
         public SpecFlowProject()

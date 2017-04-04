@@ -33,10 +33,8 @@ namespace TechTalk.SpecFlow.Generator.Project
             specFlowProject.ProjectSettings.ProjectFolder = projectFolder;
             specFlowProject.ProjectSettings.ProjectName = Path.GetFileNameWithoutExtension(projectFilePath);
             specFlowProject.ProjectSettings.AssemblyName = project.AllEvaluatedProperties.First(x=>x.Name=="AssemblyName").EvaluatedValue;
-            specFlowProject.ProjectSettings.DefaultNamespace =project.AllEvaluatedProperties.First(x=>x.Name=="RootNamespace").EvaluatedValue;
-
-
-
+            specFlowProject.ProjectSettings.DefaultNamespace = project.AllEvaluatedProperties.First(x=>x.Name=="RootNamespace").EvaluatedValue;
+            
             specFlowProject.ProjectSettings.ProjectPlatformSettings.Language = GetLanguage(project);
 
             foreach (ProjectItem item in project.FeatureFiles())
@@ -58,6 +56,8 @@ namespace TechTalk.SpecFlow.Generator.Project
                 specFlowProject.ProjectSettings.ConfigurationHolder = configurationHolder;
                 specFlowProject.Configuration = configurationLoader.LoadConfiguration(configurationHolder);
             }
+
+            specFlowProject.ProjectNuGetInfo = project.GetNuGetInfo();
             
             return specFlowProject;
         }
