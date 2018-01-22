@@ -1,16 +1,14 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
 using TechTalk.SpecFlow.Generator.Interfaces;
+using Xunit;
 
 namespace TechTalk.SpecFlow.GeneratorTests
 {
-    [TestFixture]
     public class TestGeneratorErrorsTests : TestGeneratorTestsBase
     {
-        [Test]
+        [Fact]
         public void Should_not_succeed_when_invalid_feature_file()
         {
             var testGenerator = CreateTestGenerator(net35CSProjectSettings);
@@ -19,7 +17,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             result.Success.Should().Be(false);
         }
 
-        [Test]
+        [Fact]
         public void Should_report_error_when_invalid_feature_file()
         {
             var testGenerator = CreateTestGenerator(net35CSProjectSettings);
@@ -29,7 +27,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             result.Errors.Should().NotBeEmpty();
         }
 
-        [Test]
+        [Fact]
         public void Should_report_multiple_errors_when_feature_file_contains_such()
         {
             var testGenerator = CreateTestGenerator(net35CSProjectSettings); 
@@ -44,7 +42,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             result.Errors.Count().Should().Be(2);
         }
 
-        [Test]
+        [Fact]
         public void Should_report_error_when_unsupported_project_language()
         {
             ProjectSettings invalidLangSettings = new ProjectSettings { ProjectFolder = Path.GetTempPath(), ProjectPlatformSettings = new ProjectPlatformSettings { Language = "InvalidLang" } };
@@ -55,7 +53,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             result.Errors.Should().NotBeEmpty();
         }
 
-        [Test]
+        [Fact]
         public void Should_report_error_when_the_scenario_has_no_title()
         {
             var testGenerator = CreateTestGenerator(net35CSProjectSettings);

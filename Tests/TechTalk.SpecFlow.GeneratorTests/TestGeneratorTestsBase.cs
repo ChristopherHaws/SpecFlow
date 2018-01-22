@@ -1,15 +1,12 @@
 ﻿using System;
 using System.IO;
 using Moq;
-using NUnit.Framework;
 using TechTalk.SpecFlow.Configuration;
 using TechTalk.SpecFlow.Generator;
-using TechTalk.SpecFlow.Generator.Configuration;
 using TechTalk.SpecFlow.Generator.Interfaces;
 using TechTalk.SpecFlow.Generator.UnitTestConverter;
 using TechTalk.SpecFlow.Generator.UnitTestProvider;
 using TechTalk.SpecFlow.Parser;
-using TechTalk.SpecFlow.Utils;
 
 namespace TechTalk.SpecFlow.GeneratorTests
 {
@@ -22,9 +19,8 @@ namespace TechTalk.SpecFlow.GeneratorTests
         protected GenerationSettings defaultSettings;
         protected Mock<ITestHeaderWriter> TestHeaderWriterStub;
         protected Mock<ITestUpToDateChecker> TestUpToDateCheckerStub;
-
-        [SetUp]
-        public virtual void Setup()
+        
+        protected TestGeneratorTestsBase()
         {
             net35CSSettings = new ProjectPlatformSettings
                                   {

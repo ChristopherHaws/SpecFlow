@@ -4,14 +4,13 @@ using System.IO;
 using System.Linq;
 using FluentAssertions;
 using Microsoft.CSharp;
-using NUnit.Framework;
 using TechTalk.SpecFlow.Generator;
 using TechTalk.SpecFlow.Generator.UnitTestProvider;
 using TechTalk.SpecFlow.Parser;
+using Xunit;
 
 namespace TechTalk.SpecFlow.GeneratorTests
 {
-    [TestFixture]
     public class XUnit2TestGeneratorProviderTests
     {
         private const string SampleFeatureFile = @"
@@ -23,7 +22,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
                 Then something should happen";
 
         
-        [Test]
+        [Fact]
         public void Should_set_displayname_theory_attribute()
         {
             // Arrange
@@ -62,31 +61,31 @@ namespace TechTalk.SpecFlow.GeneratorTests
             var modifiedAttribute = codeMemberMethod.CustomAttributes.OfType<CodeAttributeDeclaration>()
                 .FirstOrDefault(a => a.Name == "Xunit.TheoryAttribute");
 
-            Assert.That(modifiedAttribute, Is.Not.Null);
+            modifiedAttribute.Should().NotBeNull();
             var attribute = modifiedAttribute.Arguments.OfType<CodeAttributeArgument>()
                 .FirstOrDefault(a => a.Name == "DisplayName");
-            Assert.That(attribute, Is.Not.Null);
+            attribute.Should().NotBeNull();
 
             var primitiveExpression = attribute.Value as CodePrimitiveExpression;
-            Assert.That(primitiveExpression, Is.Not.Null);
-            Assert.That(primitiveExpression.Value, Is.EqualTo("Foo"));
+            primitiveExpression.Should().NotBeNull();
+            primitiveExpression.Value.Should().Be("Foo");
         }
 
-        [Test]
+        [Fact]
         public void Should_initialize_testOutputHelper_field_in_constructor()
         {
             SpecFlowGherkinParser parser = new SpecFlowGherkinParser(new CultureInfo("en-US"));
             using (var reader = new StringReader(SampleFeatureFile))
             {
                 SpecFlowDocument document = parser.Parse(reader, null);
-                Assert.IsNotNull(document);
+                document.Should().NotBeNull();
 
                 var provider = new XUnit2TestGeneratorProvider(new CodeDomHelper(CodeDomProviderLanguage.CSharp));
 
                 var converter = provider.CreateUnitTestConverter();
                 CodeNamespace code = converter.GenerateUnitTestFixture(document, "TestClassName", "Target.Namespace");
-
-                Assert.IsNotNull(code);
+                
+                code.Should().NotBeNull();
                 var classContructor = code.Class().Members().Single(m => m.Name == ".ctor");
                 classContructor.Should().NotBeNull();
                 classContructor.Parameters.Count.Should().Be(2);
@@ -100,42 +99,42 @@ namespace TechTalk.SpecFlow.GeneratorTests
             }
         }
         
-        [Test]
+        [Fact]
         public void Should_add_testOutputHelper_field_in_class()
         {
             SpecFlowGherkinParser parser = new SpecFlowGherkinParser(new CultureInfo("en-US"));
             using (var reader = new StringReader(SampleFeatureFile))
             {
                 SpecFlowDocument document = parser.Parse(reader, null);
-                Assert.IsNotNull(document);
+                document.Should().NotBeNull();
 
                 var provider = new XUnit2TestGeneratorProvider(new CodeDomHelper(CodeDomProviderLanguage.CSharp));
 
                 var converter = provider.CreateUnitTestConverter();
                 CodeNamespace code = converter.GenerateUnitTestFixture(document, "TestClassName", "Target.Namespace");
 
-                Assert.IsNotNull(code);
+                code.Should().NotBeNull();
                 var loggerInstance = code.Class().Members.OfType<CodeMemberField>().First(m => m.Name == @"_testOutputHelper");
                 loggerInstance.Type.BaseType.Should().Be("Xunit.Abstractions.ITestOutputHelper");
                 loggerInstance.Attributes.Should().Be(MemberAttributes.Private | MemberAttributes.Final);
             }
         }
 
-        [Test]
+        [Fact]
         public void Should_register_testOutputHelper_on_scenario_setup()
         {
             SpecFlowGherkinParser parser = new SpecFlowGherkinParser(new CultureInfo("en-US"));
             using (var reader = new StringReader(SampleFeatureFile))
             {
                 SpecFlowDocument document = parser.Parse(reader, null);
-                Assert.IsNotNull(document);
+                document.Should().NotBeNull();
 
                 var provider = new XUnit2TestGeneratorProvider(new CodeDomHelper(CodeDomProviderLanguage.CSharp));
 
                 var converter = provider.CreateUnitTestConverter();
                 CodeNamespace code = converter.GenerateUnitTestFixture(document, "TestClassName", "Target.Namespace");
 
-                Assert.IsNotNull(code);
+                code.Should().NotBeNull();
                 var scenarioStartMethod = code.Class().Members().Single(m => m.Name == @"ScenarioSetup");
 
                 scenarioStartMethod.Statements.Count.Should().Be(2);

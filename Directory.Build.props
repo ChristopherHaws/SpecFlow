@@ -9,7 +9,9 @@
     <PackageIconUrl>http://go.specflow.org/specflow-nuget-icon</PackageIconUrl>
     <RepositoryUrl>https://github.com/techtalk/SpecFlow</RepositoryUrl>
 
-    <SignAssembly>true</SignAssembly>
+    <!-- Disabled signing since the gherkin package is not signed -->
+    <SignAssembly>false</SignAssembly>
+    <!--<SignAssembly>true</SignAssembly>-->
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)/specflow.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>

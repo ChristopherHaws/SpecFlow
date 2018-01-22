@@ -1,24 +1,20 @@
-﻿using System;
-using System.CodeDom;
+﻿using System.CodeDom;
 using System.Collections.Generic;
-using System.Linq;
 using BoDi;
-using Moq;
-using NUnit.Framework;
-using TechTalk.SpecFlow.Generator;
-using TechTalk.SpecFlow.Generator.UnitTestConverter;
 using FluentAssertions;
 using Gherkin.Ast;
+using Moq;
+using TechTalk.SpecFlow.Generator;
+using TechTalk.SpecFlow.Generator.UnitTestConverter;
+using Xunit;
 
 namespace TechTalk.SpecFlow.GeneratorTests
 {
-    [TestFixture]
     public class DecoratorRegistryTests
     {
         private IObjectContainer container;
-        
-        [SetUp]
-        public void Setup()
+
+        public DecoratorRegistryTests()
         {
             container = new ObjectContainer();
         }
@@ -75,7 +71,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             return new TestClassGenerationContext(null, ParserHelper.CreateAnyDocument(new []{ tag }), null, null, null, null, null, null, null, null, null, null, true);
         }
 
-        [Test]
+        [Fact]
         public void Should_decorate_test_class()
         {
             var testClassDecoratorMock = CreateTestClassDecoratorMock();
@@ -88,7 +84,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             testClassDecoratorMock.Verify(d => d.DecorateFrom(It.IsAny<TestClassGenerationContext>()));
         }
 
-        [Test]
+        [Fact]
         public void Should_decorate_test_class_when_not_applicable()
         {
             var testClassDecoratorMock = CreateTestClassDecoratorMock();
@@ -102,7 +98,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             testClassDecoratorMock.Verify(d => d.DecorateFrom(It.IsAny<TestClassGenerationContext>()), Times.Never());
         }
 
-        [Test]
+        [Fact]
         public void Should_decorate_test_class_based_on_tag()
         {
             var testClassDecoratorMock = CreateTestClassTagDecoratorMock();
@@ -115,7 +111,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             testClassDecoratorMock.Verify(d => d.DecorateFrom(It.IsAny<string>(), It.IsAny<TestClassGenerationContext>()));
         }
 
-        [Test]
+        [Fact]
         public void Should_remove_processed_tag_from_test_class_category_list()
         {
             var testClassDecoratorMock = CreateTestClassTagDecoratorMock();
@@ -130,7 +126,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             classCats.Should().NotContain("foo");
         }
 
-        [Test]
+        [Fact]
         public void Should_keep_processed_tag_from_test_class_category_list()
         {
             var testClassDecoratorMock = CreateTestClassTagDecoratorMock();
@@ -145,7 +141,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             classCats.Should().Contain("foo");
         }
 
-        [Test]
+        [Fact]
         public void Should_allow_multiple_decorators()
         {
             var testClassDecoratorMock1 = CreateTestClassTagDecoratorMock();
@@ -165,7 +161,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             testClassDecoratorMock2.Verify(d => d.DecorateFrom(It.IsAny<string>(), It.IsAny<TestClassGenerationContext>()));
         }
 
-        [Test]
+        [Fact]
         public void Should_higher_priority_decorator_applied_first()
         {
             List<string> executionOrder = new List<string>();
@@ -193,7 +189,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             executionOrder.Should().Equal(new object[] { "foo2", "foo1" });
         }
 
-        [Test]
+        [Fact]
         public void Should_not_decorate_test_method_for_feature_tag()
         {
             var testMethodDecoratorMock = CreateTestMethodTagDecoratorMock();
@@ -206,7 +202,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             testMethodDecoratorMock.Verify(d => d.DecorateFrom("foo", It.IsAny<TestClassGenerationContext>(), It.IsAny<CodeMemberMethod>()), Times.Never());
         }
 
-        [Test]
+        [Fact]
         public void Should_decorate_test_method_for_scenario_tag()
         {
             var testMethodDecoratorMock = CreateTestMethodTagDecoratorMock();
@@ -219,7 +215,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             testMethodDecoratorMock.Verify(d => d.DecorateFrom(It.IsAny<string>(), It.IsAny<TestClassGenerationContext>(), It.IsAny<CodeMemberMethod>()));
         }
 
-        [Test]
+        [Fact]
         public void Should_decorate_test_method()
         {
             var testMethodDecoratorMock = CreateTestMethodDecoratorMock();
@@ -232,7 +228,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             testMethodDecoratorMock.Verify(d => d.DecorateFrom(It.IsAny<TestClassGenerationContext>(), It.IsAny<CodeMemberMethod>()));
         }
 
-        [Test]
+        [Fact]
         public void Should_not_decorate_test_method_when_not_applicable()
         {
             var testMethodDecoratorMock = CreateTestMethodDecoratorMock();

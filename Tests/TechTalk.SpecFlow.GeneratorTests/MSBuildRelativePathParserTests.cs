@@ -1,23 +1,21 @@
 ﻿using System;
 using System.IO;
 using FluentAssertions;
-using NUnit.Framework;
 using TechTalk.SpecFlow.Generator.Project;
+using Xunit;
 
 namespace TechTalk.SpecFlow.GeneratorTests
 {
-    [TestFixture]
     public class MSBuildRelativePathParserTests
     {
         private string _directoryName;
 
-        [SetUp]
-        public void Setup()
+        public MSBuildRelativePathParserTests()
         {
             _directoryName = Path.Combine(Path.GetDirectoryName(new Uri(GetType().Assembly.CodeBase).LocalPath), "Data");
         }
 
-        [Test]
+        [Fact]
         public void GetFiles_PathWithoutWildcards_ReturnsPath()
         {
             //ARRANGE
@@ -31,7 +29,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             files.Count.Should().Be(1);
         }
 
-        [Test]
+        [Fact]
         public void GetFiles_PathWithFileWildcards_ReturnsPath()
         {
             //ARRANGE
@@ -45,7 +43,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             files.Count.Should().Be(1);
         }
 
-        [Test]
+        [Fact]
         public void GetFiles_PathWithPathWildcards_ReturnsPath()
         {
             //ARRANGE
@@ -60,7 +58,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             files.Count.Should().Be(2);
         }
 
-        [Test]
+        [Fact]
         public void GetFiles_RelativePathWithFileWildcards_ReturnsPath()
         {
             //ARRANGE

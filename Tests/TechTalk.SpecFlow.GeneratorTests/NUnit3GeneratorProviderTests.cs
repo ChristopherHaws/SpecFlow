@@ -2,22 +2,17 @@
 using System.Globalization;
 using System.IO;
 using System.Linq;
-
 using FluentAssertions;
-
-using NUnit.Framework;
 using TechTalk.SpecFlow.Configuration;
 using TechTalk.SpecFlow.Generator;
-using TechTalk.SpecFlow.Generator.Configuration;
 using TechTalk.SpecFlow.Generator.Interfaces;
 using TechTalk.SpecFlow.Generator.UnitTestConverter;
 using TechTalk.SpecFlow.Generator.UnitTestProvider;
 using TechTalk.SpecFlow.Parser;
-using TechTalk.SpecFlow.Utils;
+using Xunit;
 
 namespace TechTalk.SpecFlow.GeneratorTests
 {
-    [TestFixture]
     public class NUnit3GeneratorProviderTests
     {
         private const string SampleFeatureFile = @"
@@ -51,7 +46,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             @externalDependencies @externalDependencies2
             Feature: Parallelized feature file";
 
-        [Test]
+        [Fact]
         public void ShouldNotGenerateObsoleteTestFixtureSetUpAttribute()
         {
             var code = GenerateCodeNamespaceFromFeature(SampleFeatureFile);
@@ -98,7 +93,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             return new NUnit3TestGeneratorProvider(new CodeDomHelper(CodeDomProviderLanguage.CSharp));
         }
 
-        [Test]
+        [Fact]
         public void ShouldGenerateNewOneTimeSetUpAttribute()
         {
             var code = GenerateCodeNamespaceFromFeature(SampleFeatureFile);
@@ -112,7 +107,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
                 .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ShouldNotGenerateObsoleteTestFixtureTearDownAttribute()
         {
             var code = GenerateCodeNamespaceFromFeature(SampleFeatureFile);
@@ -125,7 +120,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
                 .BeNull();
         }
 
-        [Test]
+        [Fact]
         public void ShouldGenerateNewOneTimeTearDownAttribute()
         {
             var code = GenerateCodeNamespaceFromFeature(SampleFeatureFile);
@@ -139,7 +134,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
                 .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ShouldHaveRowTestsTrait()
         {
             var nUnit3TestGeneratorProvider = CreateTestGeneratorProvider();
@@ -150,7 +145,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
                 .BeTrue("trait RowTests was not found");
         }
 
-        [Test]
+        [Fact]
         public void ShouldHaveParallelExecutionTrait()
         {
             var nUnit3TestGeneratorProvider = CreateTestGeneratorProvider();
@@ -161,7 +156,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
                 .BeTrue("trait ParallelExecution was not found");
         }
 
-        [Test]
+        [Fact]
         public void ShouldAddParallelizableAttribute()
         {
             var code = GenerateCodeNamespaceFromFeature(SampleFeatureFileWithTags, true);
@@ -171,7 +166,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             parallelAttributes.Should().HaveCount(1, "Only one Parallelizable attribute should be set");
         }
 
-        [Test]
+        [Fact]
         public void ShouldAddParallelizableAttributeBecauseThereIsNoMatchingIgnoreTag()
         {
             var code = GenerateCodeNamespaceFromFeature(SampleFeatureFile, true, new[] { "myOtherexternalDependencies" });
@@ -182,7 +177,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             attribute.Should().NotBeNull("Parallelizable attribute was not found");
         }
 
-        [Test]
+        [Fact]
         public void ShouldNotAddParallelizableAttribute()
         {
             var code = GenerateCodeNamespaceFromFeature(FeatureFileWithParallelizeIgnore, true,new [] { "externalDependencies" });
@@ -194,7 +189,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
         }
 
 
-        [Test]
+        [Fact]
         public void ShouldProvideAReasonForIgnoringAFeature()
         {
             var code = GenerateCodeNamespaceFromFeature(IgnoredFeatureFile);
@@ -211,7 +206,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
                 .NotBeNullOrWhiteSpace("No reason for ignoring the feature was given");
         }
 
-        [Test]
+        [Fact]
         public void ShouldProvideAReasonForIgnoringAScenario()
         {
             var code = GenerateCodeNamespaceFromFeature(FeatureFileWithIgnoredScenario);

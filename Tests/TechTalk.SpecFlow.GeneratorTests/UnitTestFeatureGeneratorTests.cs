@@ -1,18 +1,16 @@
-﻿using System;
-using System.CodeDom;
+﻿using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using BoDi;
+using FluentAssertions;
 using Moq;
-using NUnit.Framework;
+using TechTalk.SpecFlow.Configuration;
 using TechTalk.SpecFlow.Generator;
 using TechTalk.SpecFlow.Generator.Interfaces;
 using TechTalk.SpecFlow.Generator.UnitTestConverter;
 using TechTalk.SpecFlow.Generator.UnitTestProvider;
-using FluentAssertions;
-using TechTalk.SpecFlow.Configuration;
 using TechTalk.SpecFlow.Parser;
+using Xunit;
 
 namespace TechTalk.SpecFlow.GeneratorTests
 {
@@ -20,9 +18,8 @@ namespace TechTalk.SpecFlow.GeneratorTests
     {
         protected IObjectContainer container;
         protected Mock<IUnitTestGeneratorProvider> unitTestGeneratorProviderMock;
-
-        [SetUp]
-        public void Setup()
+        
+        public UnitTestFeatureGeneratorTestsBase()
         {
             SetupInternal();
         }
@@ -44,11 +41,10 @@ namespace TechTalk.SpecFlow.GeneratorTests
             generator.GenerateUnitTestFixture(document, "dummy", "dummyNS");
         }
     }
-
-    [TestFixture]
+    
     public class UnitTestFeatureGeneratorTests : UnitTestFeatureGeneratorTestsBase
     {
-        [Test]
+        [Fact]
         public void Should_pass_feature_tags_as_test_class_category()
         {
             var generator = CreateUnitTestFeatureGenerator();
@@ -63,7 +59,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             generatedCats.Should().Equal(new string[] {"foo", "bar"});
         }
 
-        [Test]
+        [Fact]
         public void Should_pass_scenario_tags_as_test_method_category()
         {
             var generator = CreateUnitTestFeatureGenerator();
@@ -78,7 +74,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             generatedCats.Should().Equal(new string[] {"foo", "bar"});
         }
 
-        [Test]
+        [Fact]
         public void Should_not_pass_feature_tags_as_test_method_category()
         {
             var generator = CreateUnitTestFeatureGenerator();
@@ -93,7 +89,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             generatedCats.Should().Equal(new string[] {"foo", "bar"});
         }
 
-        [Test]
+        [Fact]
         public void Should_not_pass_decorated_feature_tag_as_test_class_category()
         {
             var decoratorMock = DecoratorRegistryTests.CreateTestClassTagDecoratorMock("decorated");
@@ -108,7 +104,7 @@ namespace TechTalk.SpecFlow.GeneratorTests
             unitTestGeneratorProviderMock.Verify(ug => ug.SetTestClassCategories(It.IsAny<TestClassGenerationContext>(), It.Is<IEnumerable<string>>(cats => !cats.Contains("decorated"))));
         }
 
-        [Test]
+        [Fact]
         public void Should_not_pass_decorated_scenario_tag_as_test_method_category()
         {
             var decoratorMock = DecoratorRegistryTests.CreateTestMethodTagDecoratorMock("decorated");
