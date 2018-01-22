@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\specflow.snk</AssemblyOriginatorKeyFile>
+    <IsPackable>false</IsPackable>
     <RootNamespace>TechTalk.SpecFlow.RuntimeTests</RootNamespace>
     <AssemblyName>TechTalk.SpecFlow.RuntimeTests</AssemblyName>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
   </PropertyGroup>
 
   <ItemGroup>

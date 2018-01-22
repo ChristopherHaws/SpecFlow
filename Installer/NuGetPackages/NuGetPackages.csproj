@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
+    <IsPackable>false</IsPackable>
     <RootNamespace>NuGetIntegration</RootNamespace>
     <AssemblyName>to_be_removed</AssemblyName>
   </PropertyGroup>

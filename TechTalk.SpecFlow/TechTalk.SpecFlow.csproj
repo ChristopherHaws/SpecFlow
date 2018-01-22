@@ -2,31 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\specflow.snk</AssemblyOriginatorKeyFile>
+    <PackageId>SpecFlow</PackageId>
+    <PackageTags>specflow bdd gherkin cucumber</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
   	<PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-  	<PackageReference Include="System.ValueTuple" Version="4.3.0" />
   	<PackageReference Include="BoDi.Embedded" Version="1.3.0" />
   </ItemGroup>
-
-  <!--<ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.configuration" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>-->
 
   <ItemGroup>
     <EmbeddedResource Include="..\Languages.xml" Link="Languages.xml" />

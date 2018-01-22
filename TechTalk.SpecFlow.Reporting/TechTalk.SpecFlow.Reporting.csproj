@@ -2,14 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\specflow.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Gherkin" Version="5.0.0" />
-    <!--<PackageReference Include="Microsoft.Build.Engine" Version="15.5.180" />-->
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TechTalk.SpecFlow.Generator\TechTalk.SpecFlow.Generator.csproj" />
@@ -27,11 +20,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <EmbeddedResource Include="Common\Common.xslt" />
-    <EmbeddedResource Include="Common\GherkinElements.xslt" />
-    <EmbeddedResource Include="MsTestExecutionReport\MsTestToNUnit.xslt" />
-    <EmbeddedResource Include="StepDefinitionReport\StepDefinitionReport.xslt" />
-    <EmbeddedResource Include="NUnitExecutionReport\NUnitExecutionReport.xslt" />
+    <EmbeddedResource Include="**\*.xslt" />
     <EmbeddedResource Include="..\Languages.xml" Link="Common\Languages.xml" />
   </ItemGroup>
 
