@@ -34,58 +34,47 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="FluentAssertions">
-      <HintPath>..\packages\FluentAssertions.3.2.2\lib\net45\FluentAssertions.dll</HintPath>
-    </Reference>
-    <Reference Include="FluentAssertions.Core">
-      <HintPath>..\packages\FluentAssertions.3.2.2\lib\net45\FluentAssertions.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Edm, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Data.Edm.5.6.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.OData, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Data.OData.5.6.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <PackageReference Include="FluentAssertions" Version="3.2.2" />
+    <PackageReference Include="FluentAssertions.Core" Version="3.2.2" />
+    <PackageReference Include="Microsoft.Data.Edm, Version=5.6.2.0" Version="5.6.2" />
+    <PackageReference Include="Microsoft.Data.OData, Version=5.6.2.0" Version="5.6.2" />
+    <PackageReference Include="Microsoft.Data.Services.Client, Version=5.6.2.0" Version="5.6.2" />
+    <PackageReference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0" Version="1.8.0.0" />
+    <PackageReference Include="Microsoft.WindowsAzure.Storage, Version=4.3.0.0" Version="4.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="5.0.8" />
+    <PackageReference Include="System.Spatial" Version="5.6.2" />
+    <PackageReference Include="TechTalk.SpecFlow" Version="1.9.3.5" />
+    <PackageReference Include="WebDriver" Version="2.44.0" />
+    <PackageReference Include="WebDriver.Support" Version="2.44.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Spatial, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\System.Spatial.5.6.2\lib\net40\System.Spatial.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="TechTalk.SpecFlow">
-      <HintPath>..\packages\SpecFlow.1.9.3.5\lib\net35\TechTalk.SpecFlow.dll</HintPath>
-    </Reference>
-    <Reference Include="WebDriver">
-      <HintPath>..\packages\Selenium.WebDriver.2.44.0\lib\net40\WebDriver.dll</HintPath>
-    </Reference>
-    <Reference Include="WebDriver.Support">
-      <HintPath>..\packages\Selenium.Support.2.44.0\lib\net40\WebDriver.Support.dll</HintPath>
-    </Reference>
   </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\hacapp.core\Hacapp.Core.csproj">
+      <Project>{38A957ED-6237-439D-93AC-220BFD7D0409}</Project>
+      <Name>Hacapp.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hacapp.Data.Azure\Hacapp.Data.Azure.csproj">
+      <Project>{246EF4BD-4252-4371-A824-2CEAD1F51CFE}</Project>
+      <Name>Hacapp.Data.Azure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tests.Shared\Hacapp.Web.Tests.Shared.csproj">
+      <Project>{125f3b68-898e-4d70-8055-754d13f56bf8}</Project>
+      <Name>Hacapp.Web.Tests.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
       <ItemGroup>
@@ -181,7 +170,6 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WorkflowInstance.feature.cs</LastGenOutput>
     </None>
-    <None Include="packages.config" />
     <Compile Include="Steps\BrowserSelectionSteps.cs" />
     <None Include="..\..\LinkedFeature.feature">
       <Link>LinkedFeature.feature</Link>
@@ -191,21 +179,6 @@
       <CustomToolNamespace>$(RootNamespace)</CustomToolNamespace>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\hacapp.core\Hacapp.Core.csproj">
-      <Project>{38A957ED-6237-439D-93AC-220BFD7D0409}</Project>
-      <Name>Hacapp.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Hacapp.Data.Azure\Hacapp.Data.Azure.csproj">
-      <Project>{246EF4BD-4252-4371-A824-2CEAD1F51CFE}</Project>
-      <Name>Hacapp.Data.Azure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Tests.Shared\Hacapp.Web.Tests.Shared.csproj">
-      <Project>{125f3b68-898e-4d70-8055-754d13f56bf8}</Project>
-      <Name>Hacapp.Web.Tests.Shared</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
