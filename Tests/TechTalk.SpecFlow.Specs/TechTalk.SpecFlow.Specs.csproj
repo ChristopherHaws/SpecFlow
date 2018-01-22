@@ -1,16 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net46</TargetFramework>
+    <TargetFramework>net461</TargetFramework>
     <IsPackable>false</IsPackable>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
     <PackageReference Include="FluentAssertions" Version="4.19.0" />
-    <PackageReference Include="Gherkin" Version="4.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="6.0.1" />
     <PackageReference Include="NUnit" Version="3.2.1" />
     <PackageReference Include="NUnit.ConsoleRunner" Version="3.2.1" />
     <PackageReference Include="NUnit.Extension.NUnitProjectLoader" Version="3.2.1" />
@@ -23,6 +22,8 @@
     <PackageReference Include="xunit" Version="1.9.2" />
     <PackageReference Include="xunit.extensions" Version="1.9.2" />
     <PackageReference Include="xunit.runner.console" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Build" Version="15.5.180" />
+    <PackageReference Include="Microsoft.Build.Framework" Version="15.5.180" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,19 +33,6 @@
     <ProjectReference Include="..\..\TechTalk.SpecFlow.Parser\TechTalk.SpecFlow.Parser.csproj" />
     <ProjectReference Include="..\..\TechTalk.SpecFlow.Reporting\TechTalk.SpecFlow.Reporting.csproj" />
     <ProjectReference Include="..\..\TechTalk.SpecFlow\TechTalk.SpecFlow.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.Build" />
-    <Reference Include="Microsoft.Build.Framework" />
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,15 +2,12 @@
 using System.Globalization;
 using System.IO;
 using System.Linq;
-
-using NUnit.Framework;
-using Microsoft.CSharp;
-
-using TechTalk.SpecFlow.Utils;
-using TechTalk.SpecFlow.Parser;
-using TechTalk.SpecFlow.Generator.UnitTestProvider;
-
 using FluentAssertions;
+using Microsoft.CSharp;
+using NUnit.Framework;
+using TechTalk.SpecFlow.Generator;
+using TechTalk.SpecFlow.Generator.UnitTestProvider;
+using TechTalk.SpecFlow.Parser;
 
 namespace TechTalk.SpecFlow.GeneratorTests
 {

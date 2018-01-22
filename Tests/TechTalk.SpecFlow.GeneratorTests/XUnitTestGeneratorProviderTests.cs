@@ -1,14 +1,11 @@
-﻿using System;
-using System.CodeDom;
+﻿using System.CodeDom;
 using System.Linq;
-using Gherkin.Ast;
 using Microsoft.CSharp;
 
 using NUnit.Framework;
-
+using TechTalk.SpecFlow.Generator;
 using TechTalk.SpecFlow.Generator.UnitTestProvider;
 using TechTalk.SpecFlow.Parser;
-using TechTalk.SpecFlow.Utils;
 
 namespace TechTalk.SpecFlow.GeneratorTests
 {

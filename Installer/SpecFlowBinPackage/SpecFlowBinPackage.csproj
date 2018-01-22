@@ -1,22 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net45</TargetFramework>
+    <TargetFramework>net461</TargetFramework>
     <RootNamespace>SpecFlowBinPackage</RootNamespace>
     <AssemblyName>to_be_removed</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="MSBuildTasks" Version="1.5.0.235" PrivateAssets="all" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
 
   <ItemGroup>
