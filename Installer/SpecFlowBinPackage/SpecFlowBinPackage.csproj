@@ -1,40 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{27B6695E-7049-4C1B-8820-812722128D9E}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFramework>net45</TargetFramework>
     <RootNamespace>SpecFlowBinPackage</RootNamespace>
     <AssemblyName>to_be_removed</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
 
   <ItemGroup>
@@ -51,29 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TechTalk.SpecFlow.Generator\TechTalk.SpecFlow.Generator.csproj">
-      <Project>{453D8014-B6CD-4E86-80A8-D59F59092334}</Project>
-      <Name>TechTalk.SpecFlow.Generator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\TechTalk.SpecFlow\TechTalk.SpecFlow.csproj">
-      <Project>{413EE28C-4F89-4C6F-BA1E-2CDEE4CD43B4}</Project>
-      <Name>TechTalk.SpecFlow</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\TechTalk.SpecFlow.Tools\TechTalk.SpecFlow.Tools.csproj">
-      <Project>{87BE7FE6-C3DE-4409-ABF6-FA5B60AF3DE1}</Project>
-      <Name>TechTalk.SpecFlow.Tools</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\..\TechTalk.SpecFlow.Generator\TechTalk.SpecFlow.Generator.csproj" />
+    <ProjectReference Include="..\..\TechTalk.SpecFlow\TechTalk.SpecFlow.csproj" />
+    <ProjectReference Include="..\..\TechTalk.SpecFlow.Tools\TechTalk.SpecFlow.Tools.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  -->
   <PropertyGroup>
     <PackageDir>$(TargetDir)\package</PackageDir>
     <PdbDir>$(TargetDir)\pdb</PdbDir>

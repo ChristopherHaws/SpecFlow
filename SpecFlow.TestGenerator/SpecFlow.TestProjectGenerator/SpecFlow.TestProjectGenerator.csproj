@@ -8,9 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    
     <EmbeddedResource Include="TestProjectTemplates\**\*" />
-    
   </ItemGroup>
 
   <ItemGroup>

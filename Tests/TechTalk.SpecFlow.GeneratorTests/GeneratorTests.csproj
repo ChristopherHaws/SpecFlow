@@ -1,43 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{97C30FCC-3093-4430-93DC-D671C656C404}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFramework>net45</TargetFramework>
     <RootNamespace>TechTalk.SpecFlow.GeneratorTests</RootNamespace>
     <AssemblyName>TechTalk.SpecFlow.GeneratorTests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\specflow.snk</AssemblyOriginatorKeyFile>
-    <TargetFrameworkProfile />
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
 
   <ItemGroup>
@@ -60,60 +28,19 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\..\TechTalk.SpecFlow.Generator\TechTalk.SpecFlow.Generator.csproj">
-      <Project>{453D8014-B6CD-4E86-80A8-D59F59092334}</Project>
-      <Name>TechTalk.SpecFlow.Generator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\TechTalk.SpecFlow.Parser\TechTalk.SpecFlow.Parser.csproj">
-      <Project>{7CCEF6D6-FC17-422E-9BED-EDD752B6496F}</Project>
-      <Name>TechTalk.SpecFlow.Parser</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\TechTalk.SpecFlow\TechTalk.SpecFlow.csproj">
-      <Project>{413EE28C-4F89-4C6F-BA1E-2CDEE4CD43B4}</Project>
-      <Name>TechTalk.SpecFlow</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\TechTalk.SpecFlow.Utils\TechTalk.SpecFlow.Utils.csproj">
-      <Project>{C0AF4A43-0C3B-47C7-86DE-79FB632B1453}</Project>
-      <Name>TechTalk.SpecFlow.Utils</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\..\TechTalk.SpecFlow.Generator\TechTalk.SpecFlow.Generator.csproj" />
+    <ProjectReference Include="..\..\TechTalk.SpecFlow.Parser\TechTalk.SpecFlow.Parser.csproj" />
+    <ProjectReference Include="..\..\TechTalk.SpecFlow\TechTalk.SpecFlow.csproj" />
+    <ProjectReference Include="..\..\TechTalk.SpecFlow.Utils\TechTalk.SpecFlow.Utils.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="ConfigurationTests.cs" />
     <Content Include="Data\CSProj_NewComplex\Class1.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\CSProj_New\Class1.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Compile Include="MSBuildRelativePathParserTests.cs" />
-    <Compile Include="ScenarioOutlineParserTests.cs" />
-    <Compile Include="TestGeneratorTest.cs" />
-    <Compile Include="CodeDomExtensions.cs" />
-    <Compile Include="CustomTestGeneratorProviderTest.cs" />
-    <Compile Include="DecoratorRegistryTests.cs" />
-    <Compile Include="FeatureGeneratorProviderTests.cs" />
-    <Compile Include="FeatureGeneratorRegistryTests.cs" />
-    <Compile Include="GeneratorPluginTests.cs" />
-    <Compile Include="IgnoredTestGeneratorTests.cs" />
-    <Compile Include="IUnitTestGeneratorProviderExtensions.cs" />
-    <Compile Include="MsBuildProjectReaderTests.cs" />
-    <Compile Include="NUnit3GeneratorProviderTests.cs" />
-    <Compile Include="ParserHelper.cs" />
-    <Compile Include="MsTestGeneratorProviderTests.cs" />
-    <Compile Include="ParserTests.cs" />
-    <Compile Include="TagFilterMatcherTests.cs" />
-    <Compile Include="TestHeaderWriterTests.cs" />
-    <Compile Include="TestGeneratorErrorsTests.cs" />
-    <Compile Include="GeneratorContainerBuilderTests.cs" />
-    <Compile Include="TestGeneratorFactoryTests.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestGeneratorBasicsTests.cs" />
-    <Compile Include="TestGeneratorTestsBase.cs" />
-    <Compile Include="TestUpToDateCheckerTests.cs" />
-    <Compile Include="UnitTestFeatureGeneratorTests.cs" />
-    <Compile Include="XUnit2TestGeneratorProviderTests.cs" />
-    <Compile Include="XUnitTestGeneratorProviderTests.cs" />
     <Content Include="Data\VBProj_ToolsVersion_12\sampleCsProjectfile.vbproj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -123,8 +50,6 @@
     <Content Include="Data\VBProj_ToolsVersion_4\sampleCsProjectfile.vbproj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Data\CSProj_ToolsVersion_4\app.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -173,11 +98,6 @@
     <None Include="Data\ExampleFeatures\Features\Subfolder1\ExternalFeature1.feature">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Data\CSProj_NewComplex\sampleCsProjectfile.csproj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -194,7 +114,5 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 
 </Project>
