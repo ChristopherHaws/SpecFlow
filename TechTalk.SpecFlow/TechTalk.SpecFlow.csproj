@@ -2,31 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net45</TargetFramework>
-    <AssemblyName>TechTalk.SpecFlow</AssemblyName>
-    <AssemblyOriginatorKeyFile>../specflow.snk</AssemblyOriginatorKeyFile>
-    <SignAssembly>true</SignAssembly>
-    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     <PackageId>SpecFlow</PackageId>
-    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
-    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
-    <Authors>TechTalk</Authors>
-    <Company>TechTalk</Company>
-    <Product />
-    <PackageLicenseUrl>http://go.specflow.org/license</PackageLicenseUrl>
-    <PackageProjectUrl>http://www.specflow.org</PackageProjectUrl>
-    <PackageIconUrl>http://go.specflow.org/specflow-nuget-icon</PackageIconUrl>
-    <RepositoryUrl>https://github.com/techtalk/SpecFlow</RepositoryUrl>
-    <PackageTags>specflow bdd gherkin cucumber</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>SpecFlow aims at bridging the communication gap between domain experts and developers by binding business readable behavior specifications to the underlying implementation. Our mission is to provide a pragmatic and frictionless approach to Acceptance Test Driven Development and Behavior Driven Development for .NET projects today.</Description>
   </PropertyGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="..\Languages.xml;.\BindingSkeletons\DefaultSkeletonTemplates.sftemplate" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
-
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BoDi.Embedded" Version="1.2.0" />
@@ -40,6 +18,10 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\Languages.xml;.\BindingSkeletons\DefaultSkeletonTemplates.sftemplate" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
   </ItemGroup>
 
 </Project>

@@ -1,15 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Gherkin.Ast;
 using TechTalk.SpecFlow.Parser.SyntaxElements;
-using Background = TechTalk.SpecFlow.Parser.SyntaxElements.Background;
-using Comment = TechTalk.SpecFlow.Parser.SyntaxElements.Comment;
-using Examples = TechTalk.SpecFlow.Parser.SyntaxElements.Examples;
-using Feature = TechTalk.SpecFlow.Parser.SyntaxElements.Feature;
-using Scenario = TechTalk.SpecFlow.Parser.SyntaxElements.Scenario;
-using ScenarioOutline = TechTalk.SpecFlow.Parser.SyntaxElements.ScenarioOutline;
-using Tag = TechTalk.SpecFlow.Parser.SyntaxElements.Tag;
 
 namespace TechTalk.SpecFlow.Parser.Compatibility
 {

@@ -2,35 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net452</TargetFramework>
-    <AssemblyName>TechTalk.SpecFlow.GeneratorTests</AssemblyName>
-    <AssemblyOriginatorKeyFile>../../specflow.snk</AssemblyOriginatorKeyFile>
-    <SignAssembly>true</SignAssembly>
-    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
-    <PackageId>TechTalk.SpecFlow.GeneratorTests</PackageId>
-    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
-    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
-    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="Data\**\*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>   
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\TechTalk.SpecFlow\TechTalk.SpecFlow.csproj" />
-    <ProjectReference Include="..\..\TechTalk.SpecFlow.Utils\TechTalk.SpecFlow.Utils.csproj" />
-    <ProjectReference Include="..\..\TechTalk.SpecFlow.Parser\TechTalk.SpecFlow.Parser.csproj" />
-    <ProjectReference Include="..\..\TechTalk.SpecFlow.Generator\TechTalk.SpecFlow.Generator.csproj" />
-    <ProjectReference Include="..\..\TechTalk.SpecFlow.Reporting\TechTalk.SpecFlow.Reporting.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
@@ -49,8 +23,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
+    <ProjectReference Include="..\..\TechTalk.SpecFlow\TechTalk.SpecFlow.csproj" />
+    <ProjectReference Include="..\..\TechTalk.SpecFlow.Utils\TechTalk.SpecFlow.Utils.csproj" />
+    <ProjectReference Include="..\..\TechTalk.SpecFlow.Parser\TechTalk.SpecFlow.Parser.csproj" />
+    <ProjectReference Include="..\..\TechTalk.SpecFlow.Generator\TechTalk.SpecFlow.Generator.csproj" />
+    <ProjectReference Include="..\..\TechTalk.SpecFlow.Reporting\TechTalk.SpecFlow.Reporting.csproj" />
   </ItemGroup>
 
-  
+  <ItemGroup>
+    <None Include="Data\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

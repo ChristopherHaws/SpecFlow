@@ -2,8 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net45</TargetFramework>
-    <AssemblyName>DummyProjectForHoldingTheNUnit2Reference</AssemblyName>
-    <PackageId>DummyProjectForHoldingTheNUnit2Reference</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

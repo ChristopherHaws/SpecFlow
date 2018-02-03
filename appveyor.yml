@@ -14,13 +14,6 @@ environment:
 cache:
   - packages -> **\packages.config
 
-assembly_info:
-  patch: true
-  file: '**\AssemblyInfo.*'
-  assembly_version: "$(SpecFlowBaseVersion)"
-  assembly_file_version: "$(SpecFlowBaseVersion)"
-  assembly_informational_version: "$(SpecFlowPackageVersion)"
-
 nuget:
   project_feed: true
   disable_publish_on_pr: true

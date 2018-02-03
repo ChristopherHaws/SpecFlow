@@ -3,24 +3,11 @@
   <PropertyGroup>
     <TargetFramework>net45</TargetFramework>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <PackageId>TechTalk.SpecFlow.Tools</PackageId>
     <AssemblyName>specflow</AssemblyName>
     <OutputType>Exe</OutputType>
-    <AssemblyOriginatorKeyFile>../specflow.snk</AssemblyOriginatorKeyFile>
-    <SignAssembly>true</SignAssembly>
-    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
-    <PackageId>TechTalk.SpecFlow.Tools</PackageId>
-    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
-    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
-
-  <Import Project="..\Build\Versioning.targets" />
-
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TechTalk.SpecFlow\TechTalk.SpecFlow.csproj" />
@@ -38,10 +25,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 
-  <Target Name="GenerateConfigs" BeforeTargets="Build">
-    <Message Text="Generating Configs for Version '$(SpecFlowBaseVersion)'" />
-    <ReplaceTokenInFile InputPath="$(ProjectDir)\\config.template" OutputPath="$(ProjectDir)\\app.config" Token="[CURRENT_VERSION]" Replacement="$(SpecFlowBaseVersion)" />
-    <ReplaceTokenInFile InputPath="$(ProjectDir)\\config.template" OutputPath="$(ProjectDir)\\plugincompability.config" Token="[CURRENT_VERSION]" Replacement="$(SpecFlowBaseVersion)" />
-  </Target>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+
 </Project>
 

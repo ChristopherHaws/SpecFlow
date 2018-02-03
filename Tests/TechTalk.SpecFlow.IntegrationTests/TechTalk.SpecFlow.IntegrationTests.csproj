@@ -2,31 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net452</TargetFramework>
-    <AssemblyName>TechTalk.SpecFlow.IntegrationTests</AssemblyName>
-    <AssemblyOriginatorKeyFile>../../specflow.snk</AssemblyOriginatorKeyFile>
-    <SignAssembly>true</SignAssembly>
-    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
-    <PackageId>TechTalk.SpecFlow.IntegrationTests</PackageId>
-    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
-    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
-    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <VerboseOutput>true</VerboseOutput>
+    <SpecFlowTasksPath>..\..\TechTalk.SpecFlow.Tools\bin\$(Configuration)\net45\specflow.exe</SpecFlowTasksPath>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
   </PropertyGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include=".\TestFiles\*.feature;.\TestFiles\*.xml" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
-    <None Include=".\Features\*.feature" />
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\TechTalk.SpecFlow.Parser\TechTalk.SpecFlow.Parser.csproj" />
-    <ProjectReference Include="..\TechTalk.SpecFlow.Specs\TechTalk.SpecFlow.Specs.csproj" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
@@ -41,14 +21,9 @@
     <PackageReference Include="RhinoMocks" Version="3.6.1" />
     <PackageReference Include="Gherkin" Version="4.0.0" />
     <PackageReference Include="xunit" Version="2.2.0" />
-    <PackageReference Include="xunit.extensions" Version="1.9.2" />
     <PackageReference Include="xunit.runner.console" Version="2.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
   </ItemGroup>
-
-  <Target Name="PostcompileScript" AfterTargets="Build">
-    <Exec Command="../../PostCompile.bat $(MSBuildProjectDirectory)" />
-  </Target>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
     <Reference Include="System" />
@@ -59,18 +34,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
+    <ProjectReference Include="..\..\TechTalk.SpecFlow.Parser\TechTalk.SpecFlow.Parser.csproj" />
+    <ProjectReference Include="..\TechTalk.SpecFlow.Specs\TechTalk.SpecFlow.Specs.csproj" />
   </ItemGroup>
 
-  <PropertyGroup>
-    <VerboseOutput>true</VerboseOutput>
-    <SpecFlowTasksPath>..\..\TechTalk.SpecFlow.Tools\bin\$(Configuration)\net45\specflow.exe</SpecFlowTasksPath>
-  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include=".\TestFiles\*.feature;.\TestFiles\*.xml" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
+    <None Include=".\Features\*.feature" />
+    <None Include="App.config" />
+  </ItemGroup>
 
   <Import Project="..\..\TechTalk.SpecFlow.Tools\MsBuild\TechTalk.SpecFlow.NewCSProj.targets" />
 
   <Target Name="GenerateSpecFlowCodeBehinds" BeforeTargets="Build">
     <CallTarget Targets="GenerateCodeBehind" />
+  </Target>
+
+  <Target Name="PostcompileScript" AfterTargets="Build">
+    <Exec Command="../../PostCompile.bat $(MSBuildProjectDirectory)" />
   </Target>
 
   <Target Name="AfterUpdateFeatureFilesInProject">

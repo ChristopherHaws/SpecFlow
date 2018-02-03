@@ -61,11 +61,10 @@ echo vs-project-loader.dll >> "%copyTargetDir%\NUnit3-Runner\tools\.addins"
 echo nunit.v2.driver.dll >> "%copyTargetDir%\NUnit3-Runner\tools\.addins"
 echo nunit-project-loader.dll >> "%copyTargetDir%\NUnit3-Runner\tools\.addins"
 
-xcopy "%USERPROFILE%\.nuget\packages\xunit\1.9.2\*.*" "%copyTargetDir%\xUnit\" /s /y
-xcopy "%USERPROFILE%\.nuget\packages\xunit.extensions\1.9.2\*.*" "%copyTargetDir%\xUnit\" /s /y
+xcopy "%USERPROFILE%\.nuget\packages\xunit\2.2.0\*.*" "%copyTargetDir%\xUnit\" /s /y
 
 
-xcopy "%USERPROFILE%\.nuget\packages\xunit.runner.console\2.0.0\*.*" "%copyTargetDir%\xunit.runner.console\" /s /y
+xcopy "%USERPROFILE%\.nuget\packages\xunit.runner.console\2.2.0\*.*" "%copyTargetDir%\xunit.runner.console\" /s /y
 
 rem xcopy "%USERPROFILE%\.nuget\packages\SpecFlow\1.9.0\lib\net35\*.*" "%copyTargetDir%\" /s /y
 
