@@ -45,17 +45,4 @@
     <Exec Command="../../PostCompile.bat $(MSBuildProjectDirectory)" />
   </Target>
 
-  <Target Name="MoveFeatureFiles" AfterTargets="UpdateFeatureFilesInProject">
-    <Move SourceFiles="@(SpecFlowGeneratedFiles)" DestinationFolder="Features.Generated" OverwriteReadOnlyFiles="true">
-      <Output TaskParameter="MovedFiles" ItemName="MovedSpecFlowGeneratedFiles" />
-    </Move>
-    
-    <ItemGroup>
-      <Compile Remove="**/*.feature.cs" />
-      <Compile Include="@(MovedSpecFlowGeneratedFiles)">
-        <Visible>false</Visible>
-      </Compile>
-    </ItemGroup>
-  </Target>
-  
 </Project>

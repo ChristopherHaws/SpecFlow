@@ -7,6 +7,8 @@
     <TaskConfiguration Condition=" '$(TaskConfiguration)' == '' ">Debug</TaskConfiguration>
     <TaskAssembly>$(MSBuildThisFileDirectory)..\tasks\$(TaskFolder)\TechTalk.SpecFlow.Generator.Build.Tasks.dll</TaskAssembly>
     <TaskAssembly Condition=" !Exists('$(TaskAssembly)') ">$(MSBuildThisFileDirectory)..\bin\$(TaskConfiguration)\$(TaskFolder)\TechTalk.SpecFlow.Generator.Build.Tasks.dll</TaskAssembly>
+
+    <DefaultItemExcludes>$(DefaultItemExcludes);**/*.feature.cs</DefaultItemExcludes>
   </PropertyGroup>
   
   <UsingTask TaskName="TechTalk.SpecFlow.Generator.Build.Tasks.GenerateAll" AssemblyFile="$(TaskAssembly)" />

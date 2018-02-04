@@ -53,6 +53,12 @@
       VerboseOutput="$(VerboseOutput)">
       <Output TaskParameter="GeneratedFiles" ItemName="SpecFlowGeneratedFiles" />
     </GenerateAll>
+
+    <ItemGroup>
+      <Compile Include="@(SpecFlowGeneratedFiles)">
+        <Visible>false</Visible>
+      </Compile>
+    </ItemGroup>
   </Target>
 
   <Target Name="BeforeUpdateFeatureFilesInProject" />
