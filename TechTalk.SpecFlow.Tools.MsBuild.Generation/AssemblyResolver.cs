@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
-namespace TechTalk.SpecFlow.Generator.Build.Tasks
+namespace TechTalk.SpecFlow.Tools.MsBuild.Generation
 {
     /// <summary>
     /// Used to enable app-local assembly unification.

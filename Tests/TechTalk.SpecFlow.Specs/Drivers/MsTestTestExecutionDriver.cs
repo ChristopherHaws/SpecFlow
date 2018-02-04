@@ -22,9 +22,7 @@ namespace TechTalk.SpecFlow.Specs.Drivers
 
         public TestRunSummary Execute()
         {
-            string vsFolder = Environment.Is64BitProcess ? @"%ProgramFiles(x86)%\Microsoft Visual Studio 14.0\Common7\IDE" : @"%ProgramFiles%\Microsoft Visual Studio 14.0\Common7\IDE";
-            var msTestConsolePath = Path.Combine(AssemblyFolderHelper.GetTestAssemblyFolder(),
-                Environment.ExpandEnvironmentVariables(vsFolder + @"\MsTest.exe"));
+            var msTestConsolePath = this.GetMsTestPath();
 
             string resultsFilePath = Path.Combine(inputProjectDriver.DeploymentFolder, "mstest-result.trx");
 
@@ -69,6 +67,32 @@ namespace TechTalk.SpecFlow.Specs.Drivers
             testExecutionResult.LastExecutionSummary = summary;
 
             return summary;
+        }
+
+        private String GetMsTestPath()
+        {
+            var basePath = Environment.Is64BitProcess
+                ? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)
+                : Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+
+            var paths = new[]
+            {
+                Path.Combine(basePath, @"Microsoft Visual Studio 14.0\Common7\IDE"),
+                Path.Combine(basePath, @"Microsoft Visual Studio\2017\Enterprise\Common7\IDE\MSTest.exe"),
+                Path.Combine(basePath, @"Microsoft Visual Studio\2017\Professional\Common7\IDE\MSTest.exe"),
+                Path.Combine(basePath, @"Microsoft Visual Studio\Preview\Enterprise\Common7\IDE\MSTest.exe"),
+                Path.Combine(basePath, @"Microsoft Visual Studio\Preview\Professional\Common7\IDE\MSTest.exe"),
+            };
+
+            foreach (var path in paths)
+            {
+                if (File.Exists(path))
+                {
+                    return path;
+                }
+            }
+
+            throw new Exception("Could not find MSTest.exe");
         }
     }
 }

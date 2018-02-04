@@ -1,6 +1,6 @@
-﻿using System;
+﻿using System.Diagnostics;
 using System.IO;
-
+using System.Threading;
 using TechTalk.SpecFlow.Specs.Drivers;
 
 namespace TechTalk.SpecFlow.Specs.StepDefinitions
@@ -13,9 +13,24 @@ namespace TechTalk.SpecFlow.Specs.StepDefinitions
         {
             var directoryForTestProjects = InputProjectDriver.DetermineDirectoryForTestProjects();
 
-            if (Directory.Exists(directoryForTestProjects))
+            var stopwatch = Stopwatch.StartNew();
+            while (Directory.Exists(directoryForTestProjects))
             {
-                Directory.Delete(directoryForTestProjects, true);
+                try
+                {
+                    Directory.Delete(directoryForTestProjects, true);
+                    break;
+                }
+                catch
+                {
+                    // This throws because multiple threads are trying to do this at the same time
+                    Thread.Sleep(10);
+
+                    if (stopwatch.Elapsed.Seconds < 5)
+                    {
+                        throw;
+                    }
+                }
             }
         }
     }

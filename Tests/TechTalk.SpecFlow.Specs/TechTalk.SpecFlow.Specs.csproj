@@ -21,15 +21,18 @@
     <PackageReference Include="NUnit3TestAdapter" Version="3.8.0" />
     <PackageReference Include="RhinoMocks" Version="3.6.1" />
     <PackageReference Include="xunit" Version="2.2.0" />
+    <PackageReference Include="xunit.extensions" Version="1.9.2" />
     <PackageReference Include="xunit.runner.console" Version="2.2.0" />
     <PackageReference Include="SpecFlow.NUnit3.ConsoleRunner" Version="1.0.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
     <PackageReference Include="Microsoft.Build" Version="15.5.180" />
     <PackageReference Include="Microsoft.Build.Framework" Version="15.5.180" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.2.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TechTalk.SpecFlow.Generator.Build.Tasks\TechTalk.SpecFlow.Generator.Build.Tasks.csproj" />
+    <ProjectReference Include="..\..\TechTalk.SpecFlow.Tools.MsBuild.Generation\TechTalk.SpecFlow.Tools.MsBuild.Generation.csproj" />
     <ProjectReference Include="..\..\TechTalk.SpecFlow.Parser\TechTalk.SpecFlow.Parser.csproj" />
     <ProjectReference Include="..\..\TechTalk.SpecFlow.Parser.Compatibility\TechTalk.SpecFlow.Parser.Compatibility.csproj" />
     <ProjectReference Include="..\..\TechTalk.SpecFlow.Reporting\TechTalk.SpecFlow.Reporting.csproj" />

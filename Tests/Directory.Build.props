@@ -10,6 +10,6 @@
     <GenerateResourceNeverLockTypeAssemblies>true</GenerateResourceNeverLockTypeAssemblies>
   </PropertyGroup>
   
-  <Import Project="$(MSBuildThisFileDirectory)\..\TechTalk.SpecFlow.Generator.Build.Tasks\build\TechTalk.SpecFlow.Generator.Build.Tasks.props" />
+  <Import Project="$(MSBuildThisFileDirectory)\..\TechTalk.SpecFlow.Tools.MsBuild.Generation\build\SpecFlow.Tools.MsBuild.Generation.props" />
 
 </Project>

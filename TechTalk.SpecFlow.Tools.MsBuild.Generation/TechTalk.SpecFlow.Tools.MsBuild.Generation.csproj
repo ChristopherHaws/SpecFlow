@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <PackageId>SpecFlow.Tools.MsBuild.Generation</PackageId>
     <!--<TargetFrameworks>netstandard2.0;net461</TargetFrameworks>-->
     <TargetFramework>net461</TargetFramework>
     <!-- Suppresses the warnings about the package not having assemblies in lib/*/.dll.-->

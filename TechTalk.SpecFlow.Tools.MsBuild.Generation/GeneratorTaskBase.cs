@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using TechTalk.SpecFlow.Utils;
 
-namespace TechTalk.SpecFlow.Generator.Build.Tasks
+namespace TechTalk.SpecFlow.Tools.MsBuild.Generation
 {
     public abstract class GeneratorTaskBase : TaskBase
     {

@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 
-namespace TechTalk.SpecFlow.Generator.Build.Tasks
+namespace TechTalk.SpecFlow.Tools.MsBuild.Generation
 {
     public abstract class TaskBase : AppDomainIsolatedTask
     {

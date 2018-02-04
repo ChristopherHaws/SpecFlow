@@ -1,0 +1,5 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  
+  <Import Project="..\build\SpecFlow.Tools.MsBuild.Generation.props" />
+  
+</Project>

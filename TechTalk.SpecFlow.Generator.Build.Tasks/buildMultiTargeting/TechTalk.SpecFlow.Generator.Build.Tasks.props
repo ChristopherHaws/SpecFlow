@@ -1,5 +1,0 @@
-﻿<Project>
-  
-  <Import Project="..\build\TechTalk.SpecFlow.Generator.Build.Tasks.props" />
-  
-</Project>

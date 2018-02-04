@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Microsoft.Build.Evaluation;
-using TechTalk.SpecFlow.Specs.Drivers;
 using TechTalk.SpecFlow.Specs.Drivers.Templates;
 
 namespace TechTalk.SpecFlow.Specs.Drivers.MsBuild
@@ -188,6 +187,8 @@ namespace TechTalk.SpecFlow.Specs.Drivers.MsBuild
                 replacements = new Dictionary<string, string>();
 
             replacements.Add("SpecFlowRoot", Path.Combine(AssemblyFolderHelper.GetTestAssemblyFolder(), "SpecFlow"));
+            replacements.Add("SpecFlowToolsMsBuildGenerationRoot", Path.Combine(AssemblyFolderHelper.GetTestAssemblyFolder(), "SpecFlow.Tools.MsBuild.Generation"));
+            replacements.Add("packages", Path.Combine(AssemblyFolderHelper.GetTestAssemblyFolder(), "packages"));
             replacements.Add("LibRoot", AssemblyFolderHelper.GetTestAssemblyFolder());
 
             string fileContent = templateManager.LoadTemplate(templateName, replacements);

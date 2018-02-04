@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="{SpecFlowToolsMsBuildGenerationRoot}\build\SpecFlow.Tools.MsBuild.Generation.props" />
   <PropertyGroup>
     <Configuration>Debug</Configuration>
     <Platform>AnyCPU</Platform>
@@ -10,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>{ProjectName}</RootNamespace>
     <AssemblyName>{ProjectName}</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,7 +53,7 @@
   <PropertyGroup>
     <VerboseOutput>true</VerboseOutput>
   </PropertyGroup>
-  <Import Project="{SpecFlowRoot}\Tools\TechTalk.SpecFlow.targets" />
+  <Import Project="{SpecFlowToolsMsBuildGenerationRoot}\build\SpecFlow.Tools.MsBuild.Generation.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

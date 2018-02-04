@@ -1,10 +1,11 @@
 ﻿using System;
+using TechTalk.SpecFlow.Generator;
 using TechTalk.SpecFlow.Generator.Interfaces;
 using TechTalk.SpecFlow.Generator.Project;
 using TechTalk.SpecFlow.Tracing;
 using TechTalk.SpecFlow.Utils;
 
-namespace TechTalk.SpecFlow.Generator.Build.Tasks
+namespace TechTalk.SpecFlow.Tools.MsBuild.Generation
 {
     internal class MsBuildBatchGenerator : BatchGenerator
     {

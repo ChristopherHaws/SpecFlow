@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
+using TechTalk.SpecFlow.Generator;
 using TechTalk.SpecFlow.Generator.Project;
 using TechTalk.SpecFlow.Tracing;
 
-namespace TechTalk.SpecFlow.Generator.Build.Tasks
+namespace TechTalk.SpecFlow.Tools.MsBuild.Generation
 {
     public class GenerateAll : GeneratorTaskBase
     {

@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TechTalk.SpecFlow.Generator.Build.Tasks\TechTalk.SpecFlow.Generator.Build.Tasks.csproj" />
+    <ProjectReference Include="..\..\TechTalk.SpecFlow.Tools.MsBuild.Generation\TechTalk.SpecFlow.Tools.MsBuild.Generation.csproj" />
   </ItemGroup>
 
 </Project>

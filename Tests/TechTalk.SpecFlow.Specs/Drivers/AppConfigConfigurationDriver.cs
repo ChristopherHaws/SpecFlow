@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using TechTalk.SpecFlow.Specs.Drivers;
 using TechTalk.SpecFlow.Specs.Drivers.Templates;
 
 namespace TechTalk.SpecFlow.Specs.Drivers
@@ -98,6 +97,10 @@ namespace TechTalk.SpecFlow.Specs.Drivers
                     yield return @"xUnit2\xunit.abstractions.dll";
                     yield return @"xUnit2\xunit.assert.dll";
                     yield return @"xUnit2\xunit.execution.desktop.dll";
+                    break;
+                case "mstest":
+                    yield return @"packages\mstest.testframework\1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll";
+                    yield return @"packages\mstest.testframework\1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll";
                     break;
             }
         }
