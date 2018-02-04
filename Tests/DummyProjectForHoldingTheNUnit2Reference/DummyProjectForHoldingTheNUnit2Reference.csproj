@@ -10,4 +10,8 @@
     <PackageReference Include="NUnit.Runners" Version="2.6.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\TechTalk.SpecFlow.Generator.Build.Tasks\TechTalk.SpecFlow.Generator.Build.Tasks.csproj" />
+  </ItemGroup>
+
 </Project>

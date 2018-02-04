@@ -50,3 +50,4 @@ Features.Generated/
 GitExtensions.settings.backup
 
 *.nupkg
+*.feature.cs
