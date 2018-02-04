@@ -8,17 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BoDi.Embedded" Version="1.2.0" />
+    <PackageReference Include="BoDi.Embedded" Version="1.2.0" PrivateAssets="All" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="System.ValueTuple" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Linq" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 
   <ItemGroup>

@@ -21,19 +21,12 @@
     <PackageReference Include="Moq" Version="4.7.99" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.8.0" />
     <PackageReference Include="RhinoMocks" Version="3.6.1" />
-    <PackageReference Include="Gherkin" Version="4.0.0" />
     <PackageReference Include="xunit" Version="2.2.0" />
     <PackageReference Include="xunit.runner.console" Version="2.2.0" />
     <PackageReference Include="SpecFlow.NUnit3.ConsoleRunner" Version="1.0.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
-    <Reference Include="Microsoft.Build" />
-    <Reference Include="Microsoft.Build.Framework" />
-    <Reference Include="Microsoft.Build.Utilities.v4.0" />
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
+    <PackageReference Include="Microsoft.Build" Version="15.5.180" />
+    <PackageReference Include="Microsoft.Build.Framework" Version="15.5.180" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,6 +42,10 @@
     <EmbeddedResource Remove="Drivers\Templates\TemplateManager.cs" />
     <Compile Include="Drivers\Templates\TemplateManager.cs" />
     <None Include="App.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Configuration" />
   </ItemGroup>
 
   <Target Name="PostcompileScript" AfterTargets="Build">

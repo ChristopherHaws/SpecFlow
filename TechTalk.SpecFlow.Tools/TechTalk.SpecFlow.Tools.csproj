@@ -17,14 +17,6 @@
     <ProjectReference Include="..\TechTalk.SpecFlow.Reporting\TechTalk.SpecFlow.Reporting.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
-    <Reference Include="Microsoft.Build" />
-    <Reference Include="Microsoft.Build.Framework" />
-    <Reference Include="Microsoft.Build.Utilities.v4.0" />
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
