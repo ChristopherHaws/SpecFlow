@@ -27,6 +27,15 @@
     
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageOutputPath>$(MSBuildThisFileDirectory)/artifacts</PackageOutputPath>
+
+    <!--<RestoreSources>
+      https://api.nuget.org/v3/index.json;
+      https://ci.appveyor.com/nuget/gherkin-pgwyovw4bucb;
+      https://ci.appveyor.com/nuget/msbuild-msbnuget;
+    </RestoreSources>-->
+
+    <!-- We are bypassing the nuget cache because gherkin is a nupkg checked into source control with a conflicting version... -->
+    <RestorePackagesPath>$(MSBuildThisFileDirectory)/packages</RestorePackagesPath>
   </PropertyGroup>
 
 </Project>

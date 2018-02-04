@@ -4,7 +4,6 @@
     <TargetFramework>net461</TargetFramework>
     <IsPackable>false</IsPackable>
     <VerboseOutput>true</VerboseOutput>
-    <SpecFlowTasksPath>..\..\TechTalk.SpecFlow.Tools\bin\$(Configuration)\net461\specflow.exe</SpecFlowTasksPath>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
   </PropertyGroup>
@@ -36,6 +35,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <SpecFlowFeatureFiles Remove=".\TestFiles\**\*.feature" />
+    <Compile Remove=".\TestFiles\**\*.feature.cs" />
     <EmbeddedResource Include=".\TestFiles\*.feature;.\TestFiles\*.xml" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
     <None Include=".\Features\*.feature" />
     <None Include="App.config" />

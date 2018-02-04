@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Reflection;
-using TechTalk.SpecFlow.IntegrationTests.TestFiles;
-using TechTalk.SpecFlow.Assist;
-using System.Linq;
+﻿using System.IO;
 using FluentAssertions;
+using TechTalk.SpecFlow.IntegrationTests.TestFiles;
 using TechTalk.SpecFlow.Specs.Drivers;
 using TechTalk.SpecFlow.Specs.Drivers.Parser;
 

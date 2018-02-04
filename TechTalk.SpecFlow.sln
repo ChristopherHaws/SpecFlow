@@ -61,6 +61,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AEF26348-1E9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechTalk.SpecFlow.Tools.MsBuild.Generation", "TechTalk.SpecFlow.Tools.MsBuild.Generation\TechTalk.SpecFlow.Tools.MsBuild.Generation.csproj", "{E26C2889-B11E-4725-AE80-4F12F7E0FB9F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecFlow.TestProjectGenerator", "SpecFlow.TestGenerator\SpecFlow.TestProjectGenerator\SpecFlow.TestProjectGenerator.csproj", "{F3A22172-4C3B-467F-97A3-F7683DF4BA96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -151,6 +153,12 @@ Global
 		{E26C2889-B11E-4725-AE80-4F12F7E0FB9F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E26C2889-B11E-4725-AE80-4F12F7E0FB9F}.VS2010IntegrationTest|Any CPU.ActiveCfg = Debug|Any CPU
 		{E26C2889-B11E-4725-AE80-4F12F7E0FB9F}.VS2010IntegrationTest|Any CPU.Build.0 = Debug|Any CPU
+		{F3A22172-4C3B-467F-97A3-F7683DF4BA96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3A22172-4C3B-467F-97A3-F7683DF4BA96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3A22172-4C3B-467F-97A3-F7683DF4BA96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3A22172-4C3B-467F-97A3-F7683DF4BA96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3A22172-4C3B-467F-97A3-F7683DF4BA96}.VS2010IntegrationTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3A22172-4C3B-467F-97A3-F7683DF4BA96}.VS2010IntegrationTest|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -170,6 +178,7 @@ Global
 		{D719B8EA-6C89-4B81-AABD-65ACF562F521} = {AEF26348-1E90-43C9-9F9C-2AF551C5BBB8}
 		{DCD5104A-5301-44B0-A9B8-0041F782603F} = {AEF26348-1E90-43C9-9F9C-2AF551C5BBB8}
 		{E26C2889-B11E-4725-AE80-4F12F7E0FB9F} = {AEF26348-1E90-43C9-9F9C-2AF551C5BBB8}
+		{F3A22172-4C3B-467F-97A3-F7683DF4BA96} = {AEF26348-1E90-43C9-9F9C-2AF551C5BBB8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A4D0636F-0160-4FA5-81A3-9784C7E3B3A4}

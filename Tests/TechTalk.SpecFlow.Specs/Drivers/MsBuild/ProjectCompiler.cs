@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Framework;
+using SpecFlow.TestProjectGenerator;
 using Xunit.Abstractions;
 
 namespace TechTalk.SpecFlow.Specs.Drivers.MsBuild
@@ -9,10 +9,12 @@ namespace TechTalk.SpecFlow.Specs.Drivers.MsBuild
     public class ProjectCompiler
     {
         private readonly ITestOutputHelper _testOutputHelper;
+        private readonly VisualStudioFinder _visualStudioFinder;
 
-        public ProjectCompiler(ITestOutputHelper testOutputHelper)
+        public ProjectCompiler(ITestOutputHelper testOutputHelper, VisualStudioFinder visualStudioFinder)
         {
             _testOutputHelper = testOutputHelper;
+            _visualStudioFinder = visualStudioFinder;
         }
 
         public string LastCompilationOutput { get; private set; }
@@ -59,7 +61,7 @@ namespace TechTalk.SpecFlow.Specs.Drivers.MsBuild
 
         private void CompileOutProc(Project project, string target = null)
         {
-            string msBuildPath = Environment.ExpandEnvironmentVariables(string.Format(@"%WinDir%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe"));
+            string msBuildPath = _visualStudioFinder.FindMSBuild();
             _testOutputHelper.WriteLine("Invoke MsBuild from {0}", msBuildPath);
 
             ProcessHelper processHelper = new ProcessHelper();

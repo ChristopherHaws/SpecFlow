@@ -4,7 +4,8 @@
        see: https://connect.microsoft.com/VisualStudio/feedback/ViewFeedback.aspx?FeedbackID=423670&wa=wsignin1.0
   -->
   <PropertyGroup>
-    <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <SpecFlow_UseHostCompilerIfAvailable Condition="'$(SpecFlow_UseHostCompilerIfAvailable)'==''">false</SpecFlow_UseHostCompilerIfAvailable>
+    <UseHostCompilerIfAvailable>$(SpecFlow_UseHostCompilerIfAvailable)</UseHostCompilerIfAvailable>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -24,6 +25,7 @@
     <BuildDependsOn>
       BeforeUpdateFeatureFilesInProject;
       UpdateFeatureFilesInProject;
+      CompileGeneratedFeatureFiles;
       AfterUpdateFeatureFilesInProject;
       $(BuildDependsOn);
     </BuildDependsOn>
@@ -40,7 +42,7 @@
     </PropertyGroup>
   </Target>
 
-  <Target Name="UpdateFeatureFilesInProject" DependsOnTargets="BeforeUpdateFeatureFilesInProject">
+  <Target Name="UpdateFeatureFilesInProject" DependsOnTargets="BeforeUpdateFeatureFilesInProject" Inputs="@(SpecFlowFeatureFiles)" Outputs="@(SpecFlowFeatureFiles->'%(RelativeDir)\%(Filename).feature.cs')">
     <GenerateAll
       ShowTrace="$(ShowTrace)"
 
@@ -52,11 +54,20 @@
       VerboseOutput="$(VerboseOutput)">
       <Output TaskParameter="GeneratedFiles" ItemName="SpecFlowGeneratedFiles" />
     </GenerateAll>
+  </Target>
 
+  <Target Name="CompileGeneratedFeatureFiles" DependsOnTargets="UpdateFeatureFilesInProject">
     <ItemGroup>
-      <Compile Include="@(SpecFlowGeneratedFiles)">
+      <!--
+      FIXME:
+      Because of the incremental build features of UpdateFeatureFilesInProject, the SpecFlowGeneratedFiles items are not populated.
+      We need to keep another item group with previously build files...
+      
+      Right now, the first build will fail since the cs files will not exist...
+      -->
+      <!--<Compile Include="@(SpecFlowGeneratedFiles)">
         <Visible>false</Visible>
-      </Compile>
+      </Compile>-->
     </ItemGroup>
   </Target>
 

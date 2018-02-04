@@ -8,8 +8,12 @@
     <TaskAssembly>$(MSBuildThisFileDirectory)..\tasks\$(TaskFolder)\TechTalk.SpecFlow.Tools.MsBuild.Generation.dll</TaskAssembly>
     <TaskAssembly Condition=" !Exists('$(TaskAssembly)') ">$(MSBuildThisFileDirectory)..\bin\$(TaskConfiguration)\$(TaskFolder)\TechTalk.SpecFlow.Tools.MsBuild.Generation.dll</TaskAssembly>
 
-    <DefaultItemExcludes>$(DefaultItemExcludes);**/*.feature.cs</DefaultItemExcludes>
+    <!--<DefaultItemExcludes>$(DefaultItemExcludes);**/*.feature.cs</DefaultItemExcludes>-->
   </PropertyGroup>
+
+  <ItemGroup>
+    <SpecFlowFeatureFiles Include="**\*.feature"/>
+  </ItemGroup>
   
   <UsingTask TaskName="TechTalk.SpecFlow.Tools.MsBuild.Generation.GenerateAll" AssemblyFile="$(TaskAssembly)" />
 
