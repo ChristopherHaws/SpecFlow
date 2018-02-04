@@ -1,17 +1,17 @@
 ﻿using System;
-using TechTalk.SpecFlow.Generator;
 using TechTalk.SpecFlow.Generator.Interfaces;
 using TechTalk.SpecFlow.Generator.Project;
 using TechTalk.SpecFlow.Tracing;
 using TechTalk.SpecFlow.Utils;
 
-namespace TechTalk.SpecFlow.Tools.MsBuild
+namespace TechTalk.SpecFlow.Generator.Build.Tasks
 {
     internal class MsBuildBatchGenerator : BatchGenerator
     {
         private readonly GeneratorTaskBase task;
 
-        public MsBuildBatchGenerator(ITraceListener traceListener, ITestGeneratorFactory testGeneratorFactory, GeneratorTaskBase task) : base(traceListener, testGeneratorFactory)
+        public MsBuildBatchGenerator(ITraceListener traceListener, ITestGeneratorFactory testGeneratorFactory, GeneratorTaskBase task)
+            : base(traceListener, testGeneratorFactory)
         {
             this.task = task;
         }
@@ -22,7 +22,9 @@ namespace TechTalk.SpecFlow.Tools.MsBuild
         {
             var featureFileInput = base.CreateFeatureFileInput(featureFile, generator, specFlowProject);
 
-            outputFile = task.PrepareOutputFile(generator.GetTestFullPath(featureFileInput));
+            var outputFilePath = generator.GetTestFullPath(featureFileInput);
+
+            outputFile = task.PrepareOutputFile(outputFilePath);
             featureFileInput.GeneratedTestProjectRelativePath =
                 FileSystemHelper.GetRelativePath(outputFile.FilePathForWriting, specFlowProject.ProjectSettings.ProjectFolder);
             return featureFileInput;

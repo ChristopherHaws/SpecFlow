@@ -1,0 +1,14 @@
+﻿<Project TreatAsLocalProperty="TaskFolder;TaskAssembly;TaskConfiguration">
+
+  <PropertyGroup>
+    <TaskFolder Condition=" '$(MSBuildRuntimeType)' == 'Core' ">netstandard2.0</TaskFolder>
+    <TaskFolder Condition=" '$(MSBuildRuntimeType)' != 'Core' ">net461</TaskFolder>
+    <TaskConfiguration Condition=" '$(Configuration)' != '' ">$(Configuration)</TaskConfiguration>
+    <TaskConfiguration Condition=" '$(TaskConfiguration)' == '' ">Debug</TaskConfiguration>
+    <TaskAssembly>$(MSBuildThisFileDirectory)..\tasks\$(TaskFolder)\TechTalk.SpecFlow.Generator.Build.Tasks.dll</TaskAssembly>
+    <TaskAssembly Condition=" !Exists('$(TaskAssembly)') ">$(MSBuildThisFileDirectory)..\bin\$(TaskConfiguration)\$(TaskFolder)\TechTalk.SpecFlow.Generator.Build.Tasks.dll</TaskAssembly>
+  </PropertyGroup>
+  
+  <UsingTask TaskName="TechTalk.SpecFlow.Generator.Build.Tasks.GenerateAll" AssemblyFile="$(TaskAssembly)" />
+
+</Project>

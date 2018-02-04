@@ -1,0 +1,5 @@
+<Project>
+
+  <Import Project="$(MSBuildThisFileDirectory)\..\TechTalk.SpecFlow.Generator.Build.Tasks\build\TechTalk.SpecFlow.Generator.Build.Tasks.targets" />
+
+</Project>

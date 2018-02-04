@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net452</TargetFramework>
+    <TargetFramework>net461</TargetFramework>
+    <IsPackable>false</IsPackable>
     <RunPostBuildEvent>Always</RunPostBuildEvent>
     <VerboseOutput>true</VerboseOutput>
     <SpecFlowTasksPath>..\..\TechTalk.SpecFlow.Tools\bin\$(Configuration)\net45\specflow.exe</SpecFlowTasksPath>
@@ -27,7 +28,7 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
     <Reference Include="Microsoft.Build" />
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.Build.Utilities.v4.0" />
@@ -54,14 +55,17 @@
     <Exec Command="../../PostCompile.bat $(MSBuildProjectDirectory)" />
   </Target>
 
-  <Import Project="..\..\TechTalk.SpecFlow.Tools\MsBuild\TechTalk.SpecFlow.NewCSProj.targets" />
+  <Target Name="MoveFeatureFiles" AfterTargets="UpdateFeatureFilesInProject">
+    <Move SourceFiles="@(SpecFlowGeneratedFiles)" DestinationFolder="Features.Generated" OverwriteReadOnlyFiles="true">
+      <Output TaskParameter="MovedFiles" ItemName="MovedSpecFlowGeneratedFiles" />
+    </Move>
 
-  <Target Name="GenerateSpecFlowCodeBehinds" BeforeTargets="Build">
-    <CallTarget Targets="GenerateCodeBehind" />
-  </Target>
-  
-  <Target Name="AfterUpdateFeatureFilesInProject">
-    <Move SourceFiles="@(SpecFlowGeneratedFiles)" DestinationFolder="Features.Generated" OverwriteReadOnlyFiles="true" />   
+    <ItemGroup>
+      <Compile Remove="**/*.feature.cs" />
+      <Compile Include="@(MovedSpecFlowGeneratedFiles)">
+        <Visible>false</Visible>
+      </Compile>
+    </ItemGroup>
   </Target>
   
 </Project>

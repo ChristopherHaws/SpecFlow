@@ -2,10 +2,9 @@ using System;
 using System.CodeDom.Compiler;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using TechTalk.SpecFlow.Utils;
 
-namespace TechTalk.SpecFlow.Tools.MsBuild
+namespace TechTalk.SpecFlow.Generator.Build.Tasks
 {
     public abstract class GeneratorTaskBase : TaskBase
     {
