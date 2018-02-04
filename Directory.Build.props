@@ -8,6 +8,7 @@
     <Authors>TechTalk</Authors>
     <Company>TechTalk</Company>
     <Product>SpecFlow</Product>
+    <NeutralLanguage>en-US</NeutralLanguage>
 
     <PackageLicenseUrl>http://go.specflow.org/license</PackageLicenseUrl>
     <PackageProjectUrl>http://www.specflow.org</PackageProjectUrl>
@@ -25,7 +26,7 @@
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageOutputPath>$(MSBuildThisFileDirectory)/dist</PackageOutputPath>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)/artifacts</PackageOutputPath>
   </PropertyGroup>
 
 </Project>

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
     <PackageId>SpecFlow</PackageId>
+    <Title>SpecFlow</Title>
     <Description>SpecFlow aims at bridging the communication gap between domain experts and developers by binding business readable behavior specifications to the underlying implementation. Our mission is to provide a pragmatic and frictionless approach to Acceptance Test Driven Development and Behavior Driven Development for .NET projects today.</Description>
   </PropertyGroup>
 
