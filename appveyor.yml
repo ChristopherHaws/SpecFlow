@@ -10,7 +10,7 @@ branches:
 environment:
   SpecFlowBaseVersion: 3.0.0
   SpecFlowPackageVersion: "3.0.0-ci$(APPVEYOR_BUILD_NUMBER)"
-  
+
 cache:
   - packages -> **\packages.config
 
@@ -27,15 +27,11 @@ build:
   project: TechTalk.SpecFlow.sln
   verbosity: normal
 
-
-
 test_script:
-- vstest.console /logger:Appveyor "Tests\TechTalk.SpecFlow.RuntimeTests\bin\Debug\net452\TechTalk.SpecFlow.RuntimeTests.dll" /TestAdapterPath:%USERPROFILE%\.nuget\packages\xunit.runner.visualstudio\2.2.0
-- vstest.console /logger:Appveyor "Tests\TechTalk.SpecFlow.GeneratorTests\bin\Debug\net452\TechTalk.SpecFlow.GeneratorTests.dll"  /TestAdapterPath:%USERPROFILE%\.nuget\packages\xunit.runner.visualstudio\2.2.0
-- vstest.console /logger:Appveyor "Tests\TechTalk.SpecFlow.Specs\bin\Debug\net452\TechTalk.SpecFlow.Specs.dll"  /TestAdapterPath:%USERPROFILE%\.nuget\packages\xunit.runner.visualstudio\2.2.0
-- vstest.console /logger:Appveyor "Tests\TechTalk.SpecFlow.IntegrationTests\bin\Debug\net452\TechTalk.SpecFlow.IntegrationTests.dll"  /TestAdapterPath:%USERPROFILE%\.nuget\packages\xunit.runner.visualstudio\2.2.0
-
+- vstest.console /logger:Appveyor "Tests\TechTalk.SpecFlow.RuntimeTests\bin\Debug\net461\TechTalk.SpecFlow.RuntimeTests.dll"
+- vstest.console /logger:Appveyor "Tests\TechTalk.SpecFlow.GeneratorTests\bin\Debug\net461\TechTalk.SpecFlow.GeneratorTests.dll"
+- vstest.console /logger:Appveyor "Tests\TechTalk.SpecFlow.Specs\bin\Debug\net461\TechTalk.SpecFlow.Specs.dll"
+- vstest.console /logger:Appveyor "Tests\TechTalk.SpecFlow.IntegrationTests\bin\Debug\net461\TechTalk.SpecFlow.IntegrationTests.dll"
 
 artifacts:
-- path: '\Installer\NuGetPackages\bin\SpecFlow.*.nupkg'
-
+- path: '\artifacts\SpecFlow.*.nupkg'

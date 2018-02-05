@@ -44,8 +44,8 @@ rem xcopy ".\NuGet\custom\NUnit3-Runner\*" "%copyTargetDir%\NUnit3-Runner\" /s /
 xcopy ".\lib\xunit.2.0.0\*.*" "%copyTargetDir%\xUnit2\" /s /y
 xcopy ".\lib\Microsoft F#\*.*" "%copyTargetDir%\FSharp\" /s /y
 
-xcopy "%USERPROFILE%\.nuget\packages\mstest.testadapter\1.2.0\*" "%copyTargetDir%\packages\mstest.testadapter\1.2.0\" /s /y
-xcopy "%USERPROFILE%\.nuget\packages\mstest.testframework\1.2.0\*" "%copyTargetDir%\packages\mstest.testframework\1.2.0\" /s /y
+xcopy "%USERPROFILE%\.nuget\packages\mstest.testadapter\1.2.0\*" "%copyTargetDir%\packages\mstest.testadapter\" /s /y
+xcopy "%USERPROFILE%\.nuget\packages\mstest.testframework\1.2.0\*" "%copyTargetDir%\packages\mstest.testframework\" /s /y
 
 xcopy "%USERPROFILE%\.nuget\packages\NUnit\2.6.4\*" "%copyTargetDir%\NUnit\" /s /y
 xcopy "%USERPROFILE%\.nuget\packages\NUnit.Runners\2.6.4\*" "%copyTargetDir%\NUnit.Runners\" /s /y
