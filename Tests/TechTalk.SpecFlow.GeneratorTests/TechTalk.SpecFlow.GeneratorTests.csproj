@@ -33,6 +33,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\**\*" />
+    <SpecFlowFeatureFiles Remove="Data\**\*" />
     <None Include="Data\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
