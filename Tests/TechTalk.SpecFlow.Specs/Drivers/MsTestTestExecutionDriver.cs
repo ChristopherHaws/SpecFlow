@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
@@ -70,32 +69,6 @@ namespace TechTalk.SpecFlow.Specs.Drivers
             testExecutionResult.LastExecutionSummary = summary;
 
             return summary;
-        }
-
-        private String GetMsTestPath()
-        {
-            var basePath = Environment.Is64BitProcess
-                ? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)
-                : Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-
-            var paths = new[]
-            {
-                Path.Combine(basePath, @"Microsoft Visual Studio 14.0\Common7\IDE"),
-                Path.Combine(basePath, @"Microsoft Visual Studio\2017\Enterprise\Common7\IDE\MSTest.exe"),
-                Path.Combine(basePath, @"Microsoft Visual Studio\2017\Professional\Common7\IDE\MSTest.exe"),
-                Path.Combine(basePath, @"Microsoft Visual Studio\Preview\Enterprise\Common7\IDE\MSTest.exe"),
-                Path.Combine(basePath, @"Microsoft Visual Studio\Preview\Professional\Common7\IDE\MSTest.exe"),
-            };
-
-            foreach (var path in paths)
-            {
-                if (File.Exists(path))
-                {
-                    return path;
-                }
-            }
-
-            throw new Exception("Could not find MSTest.exe");
         }
     }
 }
