@@ -25,7 +25,6 @@
     <BuildDependsOn>
       BeforeUpdateFeatureFilesInProject;
       UpdateFeatureFilesInProject;
-      CompileGeneratedFeatureFiles;
       AfterUpdateFeatureFilesInProject;
       $(BuildDependsOn);
     </BuildDependsOn>
@@ -33,7 +32,17 @@
       SwitchToForceGenerate;
       $(RebuildDependsOn);
     </RebuildDependsOn>
+    <CleanDependsOn>
+      CleanSpecFlowFeatureFiles;
+      $(CleanDependsOn);
+    </CleanDependsOn>
   </PropertyGroup>
+
+  <!--<ItemGroup>
+    <Compile Update="@(Compile)" Condition="$([System.String]::Copy('%(Filename)%(Extension)').EndsWith('.feature.cs'))">
+      <Visible>false</Visible>
+    </Compile>
+  </ItemGroup>-->
 
   <Target Name="SwitchToForceGenerate">
     <PropertyGroup>
@@ -42,7 +51,11 @@
     </PropertyGroup>
   </Target>
 
-  <Target Name="UpdateFeatureFilesInProject" DependsOnTargets="BeforeUpdateFeatureFilesInProject" Inputs="@(SpecFlowFeatureFiles)" Outputs="@(SpecFlowFeatureFiles->'%(RelativeDir)\%(Filename).feature.cs')">
+  <Target Name="CleanSpecFlowFeatureFiles">
+    <!--<Delete Files="@(SpecFlowGeneratedFile)" />-->
+  </Target>
+
+  <Target Name="UpdateFeatureFilesInProject" DependsOnTargets="BeforeUpdateFeatureFilesInProject" Inputs="@(SpecFlowFeatureFile)" Outputs="@(SpecFlowFeatureFile->'%(Identity).cs')">
     <GenerateAll
       ShowTrace="$(ShowTrace)"
 
@@ -52,22 +65,16 @@
       ProjectPath="$(MSBuildProjectFullPath)"
       ForceGeneration="$(ForceGeneration)"
       VerboseOutput="$(VerboseOutput)">
-      <Output TaskParameter="GeneratedFiles" ItemName="SpecFlowGeneratedFiles" />
+      <Output TaskParameter="GeneratedFiles" ItemName="SpecFlowGeneratedFile" />
     </GenerateAll>
-  </Target>
 
-  <Target Name="CompileGeneratedFeatureFiles" DependsOnTargets="UpdateFeatureFilesInProject">
     <ItemGroup>
-      <!--
-      FIXME:
-      Because of the incremental build features of UpdateFeatureFilesInProject, the SpecFlowGeneratedFiles items are not populated.
-      We need to keep another item group with previously build files...
-      
-      Right now, the first build will fail since the cs files will not exist...
-      -->
-      <!--<Compile Include="@(SpecFlowGeneratedFiles)">
+      <!-- Deduplicate the generated files from the ones picked up directly by the default glob -->
+      <Compile Remove="@(SpecFlowGeneratedFile)" />
+      <Compile Include="@(SpecFlowGeneratedFile)">
         <Visible>false</Visible>
-      </Compile>-->
+      </Compile>
+      <FileWrite Include="@(SpecFlowGeneratedFile)" />
     </ItemGroup>
   </Target>
 
