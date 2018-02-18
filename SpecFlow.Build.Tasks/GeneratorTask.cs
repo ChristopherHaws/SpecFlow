@@ -5,7 +5,7 @@ using TechTalk.SpecFlow.Generator;
 using TechTalk.SpecFlow.Generator.Project;
 using TechTalk.SpecFlow.Tracing;
 
-namespace TechTalk.SpecFlow.Tools.MsBuild.Generation
+namespace SpecFlow.Build.Tasks
 {
     public class GenerateAll : GeneratorTaskBase
     {

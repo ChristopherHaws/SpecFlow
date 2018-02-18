@@ -1,0 +1,23 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <DefaultSpecFlowFeatureExtension Condition=" '$(DefaultSpecFlowFeatureExtension)' == '' ">.feature</DefaultSpecFlowFeatureExtension>
+
+    <SpecFlowBuildTasksDirectoryRoot>$(MSBuildThisFileDirectory)..\tools\</SpecFlowBuildTasksDirectoryRoot>
+    <SpecFlowBuildTasksTFM Condition=" '$(MSBuildRuntimeType)' == 'Core' ">netstandard2.0</SpecFlowBuildTasksTFM>
+    <SpecFlowBuildTasksTFM Condition=" '$(MSBuildRuntimeType)' != 'Core' ">net461</SpecFlowBuildTasksTFM>
+    <SpecFlowBuildTasksDirectory>$(SpecFlowBuildTasksDirectoryRoot)$(SpecFlowBuildTasksTFM)</SpecFlowBuildTasksDirectory>
+    <SpecFlowBuildTasksAssembly>$(SpecFlowBuildTasksDirectory)\SpecFlow.Build.Tasks.dll</SpecFlowBuildTasksAssembly>
+
+    <EnableDefaultSpecFlowItems Condition=" '$(EnableDefaultSpecFlowItems)' == '' ">true</EnableDefaultSpecFlowItems>
+    <!--<DefaultItemExcludes>$(DefaultItemExcludes);**/*.feature.cs</DefaultItemExcludes>-->
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(UsingMicrosoftNETSdk)' == 'true' ">
+    <!--<Compile Include="**/*.feature.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" Condition=" '$(EnableDefaultCompileItems)' == 'true' ">
+      <Visible>false</Visible>
+    </Compile>-->
+    <SpecFlowFeatureFile Include="**/*.feature" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" Condition=" '$(EnableDefaultSpecFlowItems)' == 'true' " />
+  </ItemGroup>
+
+</Project>

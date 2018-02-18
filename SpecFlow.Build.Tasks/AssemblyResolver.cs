@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
-namespace TechTalk.SpecFlow.Tools.MsBuild.Generation
+namespace SpecFlow.Build.Tasks
 {
     /// <summary>
     /// Used to enable app-local assembly unification.
@@ -20,8 +20,7 @@ namespace TechTalk.SpecFlow.Tools.MsBuild.Generation
         /// </summary>
         public static void Enable()
         {
-            // intentionally empty.  This is just meant to ensure the static constructor
-            // has run.
+            // intentionally empty.  This is just meant to ensure the static constructor has run.
         }
 
         private static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)

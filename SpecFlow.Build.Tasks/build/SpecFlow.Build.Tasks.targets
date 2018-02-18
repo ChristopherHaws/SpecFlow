@@ -55,6 +55,7 @@
     <!--<Delete Files="@(SpecFlowGeneratedFile)" />-->
   </Target>
 
+  <UsingTask TaskName="SpecFlow.Build.Tasks.GenerateAll" AssemblyFile="$(SpecFlowBuildTasksAssembly)" />
   <Target Name="UpdateFeatureFilesInProject" DependsOnTargets="BeforeUpdateFeatureFilesInProject" Inputs="@(SpecFlowFeatureFile)" Outputs="@(SpecFlowFeatureFile->'%(Identity).cs')">
     <GenerateAll
       ShowTrace="$(ShowTrace)"

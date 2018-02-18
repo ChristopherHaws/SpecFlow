@@ -17,9 +17,9 @@ mkdir "%copyTargetDir%\xUnit\"
 mkdir "%copyTargetDir%\xunit.runner.console\"
 mkdir "%copyTargetDir%\FSharp\"
 
-xcopy .\TechTalk.SpecFlow.Tools.MsBuild.Generation\build\* "%copyTargetDir%\SpecFlow.Tools.MsBuild.Generation\build\" /s /y
-xcopy .\TechTalk.SpecFlow.Tools.MsBuild.Generation\buildMultiTargeting\* "%copyTargetDir%\SpecFlow.Tools.MsBuild.Generation\buildMultiTargeting\" /s /y
-xcopy .\TechTalk.SpecFlow.Tools.MsBuild.Generation\bin\Debug\net461\* "%copyTargetDir%\SpecFlow.Tools.MsBuild.Generation\tasks\net461\" /s /y
+xcopy .\SpecFlow.Build.Tasks\build\* "%copyTargetDir%\SpecFlow.Build.Tasks\build\" /s /y
+xcopy .\SpecFlow.Build.Tasks\buildMultiTargeting\* "%copyTargetDir%\SpecFlow.Build.Tasks\buildMultiTargeting\" /s /y
+xcopy .\SpecFlow.Build.Tasks\bin\Debug\net461\* "%copyTargetDir%\SpecFlow.Build.Tasks\tools\net461\" /s /y
 
 copy .\TechTalk.SpecFlow.Tools\bin\Debug\net461\SpecFlow.* "%copyTargetDir%\SpecFlow\Tools"
 copy .\TechTalk.SpecFlow\bin\Debug\net461\*.* "%copyTargetDir%\SpecFlow\Tools"

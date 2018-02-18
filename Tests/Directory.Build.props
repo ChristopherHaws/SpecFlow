@@ -4,12 +4,16 @@
   
   <PropertyGroup>
     <!--
-    Prevents Visual Studio's instance of MSBuild from locking TechTalk.SpecFlow.Generator.Build.Tasks.dll.
+    Prevents Visual Studio's instance of MSBuild from locking SpecFlow.Build.Tasks.dll.
     This is only needed because we are building the dll in the same solution we are using it in.
     -->
     <GenerateResourceNeverLockTypeAssemblies>true</GenerateResourceNeverLockTypeAssemblies>
   </PropertyGroup>
   
-  <Import Project="$(MSBuildThisFileDirectory)\..\TechTalk.SpecFlow.Tools.MsBuild.Generation\build\SpecFlow.Tools.MsBuild.Generation.props" />
+  <Import Project="$(MSBuildThisFileDirectory)\..\SpecFlow.Build.Tasks\build\SpecFlow.Build.Tasks.props" />
+
+  <PropertyGroup>
+    <SpecFlowBuildTasksAssembly>$(MSBuildThisFileDirectory)\..\SpecFlow.Build.Tasks\bin\$(Configuration)\$(SpecFlowBuildTasksTFM)\SpecFlow.Build.Tasks.dll</SpecFlowBuildTasksAssembly>
+  </PropertyGroup>
 
 </Project>

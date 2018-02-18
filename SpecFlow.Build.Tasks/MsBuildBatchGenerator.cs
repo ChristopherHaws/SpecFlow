@@ -5,7 +5,7 @@ using TechTalk.SpecFlow.Generator.Project;
 using TechTalk.SpecFlow.Tracing;
 using TechTalk.SpecFlow.Utils;
 
-namespace TechTalk.SpecFlow.Tools.MsBuild.Generation
+namespace SpecFlow.Build.Tasks
 {
     internal class MsBuildBatchGenerator : BatchGenerator
     {
