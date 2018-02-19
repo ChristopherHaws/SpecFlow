@@ -52,13 +52,14 @@ namespace TechTalk.SpecFlow.Specs.Drivers.MsBuild
             {
                 string outputPath = Path.Combine(inputProjectDriver.CompilationFolder, featureFileInput.ProjectRelativePath);
                 File.WriteAllText(outputPath, featureFileInput.Content, Encoding.UTF8);
-                var generatedFile = featureFileInput.ProjectRelativePath + "." + inputProjectDriver.CodeFileExtension;
-                project.AddItem("None", featureFileInput.ProjectRelativePath, new[]
-                                                                                  {
-                                                                                      new KeyValuePair<string, string>("Generator", "SpecFlowSingleFileGenerator"),
-                                                                                      new KeyValuePair<string, string>("LastGenOutput", generatedFile),
-                                                                                  });
-                project.AddItem("Compile", generatedFile);
+                project.AddItem("SpecFlowFeatureFile", featureFileInput.ProjectRelativePath);
+                //var generatedFile = featureFileInput.ProjectRelativePath + "." + inputProjectDriver.CodeFileExtension;
+                //project.AddItem("None", featureFileInput.ProjectRelativePath, new[]
+                //{
+                //    new KeyValuePair<string, string>("Generator", "SpecFlowSingleFileGenerator"),
+                //    new KeyValuePair<string, string>("LastGenOutput", generatedFile),
+                //});
+                //project.AddItem("Compile", generatedFile);
             }
 
             foreach (var contentFileInput in inputProjectDriver.ContentFiles)
@@ -187,7 +188,7 @@ namespace TechTalk.SpecFlow.Specs.Drivers.MsBuild
                 replacements = new Dictionary<string, string>();
 
             replacements.Add("SpecFlowRoot", Path.Combine(AssemblyFolderHelper.GetTestAssemblyFolder(), "SpecFlow"));
-            replacements.Add("SpecFlowToolsMsBuildGenerationRoot", Path.Combine(AssemblyFolderHelper.GetTestAssemblyFolder(), "SpecFlow.Tools.MsBuild.Generation"));
+            replacements.Add("SpecFlowBuildTasksRoot", Path.Combine(AssemblyFolderHelper.GetTestAssemblyFolder(), "SpecFlow.Build.Tasks"));
             replacements.Add("packages", Path.Combine(AssemblyFolderHelper.GetTestAssemblyFolder(), "packages"));
             replacements.Add("LibRoot", AssemblyFolderHelper.GetTestAssemblyFolder());
 

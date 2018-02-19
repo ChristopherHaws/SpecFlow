@@ -37,10 +37,10 @@ namespace TechTalk.SpecFlow.Specs.Drivers.MsBuild
             public void Initialize(IEventSource eventSource)
             {
                 eventSource.AnyEventRaised += (o, args) =>
-                                                  {
-                                                      if (args.Message.StartsWith("SpecFlow"))
-                                                          _testOutputHelper.WriteLine("MSBUILD: {0}", args.Message);
-                                                  };
+                {
+                    //if (args.Message.StartsWith("SpecFlow"))
+                        _testOutputHelper.WriteLine("MSBUILD: {0}", args.Message);
+                };
                 eventSource.ErrorRaised += (sender, args) => _testOutputHelper.WriteLine("MSBUILD: error {0}", args.Message);
             }
 
@@ -64,7 +64,7 @@ namespace TechTalk.SpecFlow.Specs.Drivers.MsBuild
             string msBuildPath = _visualStudioFinder.FindMSBuild();
             _testOutputHelper.WriteLine("Invoke MsBuild from {0}", msBuildPath);
 
-            ProcessHelper processHelper = new ProcessHelper();
+            ProcessHelper processHelper = new ProcessHelper(_testOutputHelper);
             string targetArg = target == null ? "" : " /target:" + target;
             int exitCode = processHelper.RunProcess(msBuildPath, "/nologo /v:m \"{0}\" {1} /p:Configuration=Debug /p:Platform=AnyCpu", project.FullPath, targetArg);
             LastCompilationOutput = processHelper.ConsoleOutput;

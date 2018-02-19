@@ -55,20 +55,21 @@
     <!--<Delete Files="@(SpecFlowGeneratedFile)" />-->
   </Target>
 
-  <UsingTask TaskName="SpecFlow.Build.Tasks.GenerateAll" AssemblyFile="$(SpecFlowBuildTasksAssembly)" />
+  <UsingTask TaskName="SpecFlow.Build.Tasks.GenerateFeatureFile" AssemblyFile="$(SpecFlowBuildTasksAssembly)" />
   <Target Name="UpdateFeatureFilesInProject" DependsOnTargets="BeforeUpdateFeatureFilesInProject" Inputs="@(SpecFlowFeatureFile)" Outputs="@(SpecFlowFeatureFile->'%(Identity).cs')">
-    <GenerateAll
+    <GenerateFeatureFile
       ShowTrace="$(ShowTrace)"
 
       BuildServerMode="$(BuildServerMode)"
       OverwriteReadOnlyFiles="$(OverwriteReadOnlyFiles)"
       
       ProjectPath="$(MSBuildProjectFullPath)"
+      FeatureFiles="@(SpecFlowFeatureFile)"
       ForceGeneration="$(ForceGeneration)"
       VerboseOutput="$(VerboseOutput)">
       <Output TaskParameter="GeneratedFiles" ItemName="SpecFlowGeneratedFile" />
-    </GenerateAll>
-
+    </GenerateFeatureFile>
+    
     <ItemGroup>
       <!-- Deduplicate the generated files from the ones picked up directly by the default glob -->
       <Compile Remove="@(SpecFlowGeneratedFile)" />

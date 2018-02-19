@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <Import Project="{SpecFlowToolsMsBuildGenerationRoot}\build\SpecFlow.Tools.MsBuild.Generation.props" />
+  <Import Project="{SpecFlowBuildTasksRoot}\build\SpecFlow.Build.Tasks.props" />
   
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -70,6 +70,6 @@
   </ItemGroup>
   
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
-  <Import Project="{SpecFlowToolsMsBuildGenerationRoot}\build\SpecFlow.Tools.MsBuild.Generation.targets" />
+  <Import Project="{SpecFlowBuildTasksRoot}\build\SpecFlow.Build.Tasks.targets" />
   
 </Project>

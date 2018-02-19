@@ -4,19 +4,22 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using SpecFlow.TestProjectGenerator;
+using Xunit.Abstractions;
 
 namespace TechTalk.SpecFlow.Specs.Drivers
 {
     public class MsTestTestExecutionDriver
     {
+        private readonly ITestOutputHelper testOutputHelper;
         private readonly InputProjectDriver inputProjectDriver;
         private readonly TestExecutionResult testExecutionResult;
         private readonly VisualStudioFinder _visualStudioFinder;
 
         public TestSettingsFileInput TestSettingsFile { get; set; }
 
-        public MsTestTestExecutionDriver(InputProjectDriver inputProjectDriver, TestExecutionResult testExecutionResult, VisualStudioFinder visualStudioFinder)
+        public MsTestTestExecutionDriver(ITestOutputHelper testOutputHelper, InputProjectDriver inputProjectDriver, TestExecutionResult testExecutionResult, VisualStudioFinder visualStudioFinder)
         {
+            this.testOutputHelper = testOutputHelper;
             this.inputProjectDriver = inputProjectDriver;
             this.testExecutionResult = testExecutionResult;
             _visualStudioFinder = visualStudioFinder;
@@ -31,7 +34,7 @@ namespace TechTalk.SpecFlow.Specs.Drivers
 
             string testSettingsFilePath = null;
 
-            var processHelper = new ProcessHelper();
+            var processHelper = new ProcessHelper(this.testOutputHelper);
 
             string argumentsFormat = "\"/testcontainer:{0}\" \"/resultsfile:{1}\" /usestderr";
 

@@ -1,14 +1,38 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
-using System.Reflection;
 using System.Text;
 using System.Threading;
+using Xunit.Abstractions;
 
 namespace TechTalk.SpecFlow.Specs.Drivers
 {
+    public class ConsoleTestOutputHelper : ITestOutputHelper
+    {
+        public void WriteLine(String message)
+        {
+            Console.WriteLine(message);
+        }
+
+        public void WriteLine(String format, params Object[] args)
+        {
+            Console.WriteLine(format, args);
+        }
+    }
+
     public class ProcessHelper
     {
+        private readonly ITestOutputHelper testOutputHelper;
+
+        public ProcessHelper()
+            : this(new ConsoleTestOutputHelper())
+        {
+        }
+
+        public ProcessHelper(ITestOutputHelper testOutputHelper)
+        {
+            this.testOutputHelper = testOutputHelper;
+        }
+
         public string ConsoleOutput { get; private set; }
 
         public string ConsoleError { get; private set; }
@@ -18,10 +42,8 @@ namespace TechTalk.SpecFlow.Specs.Drivers
             string commandArguments = string.Format(argumentsFormat, arguments);
             ProcessStartInfo psi = new ProcessStartInfo(executablePath, commandArguments);
 
-            Console.WriteLine($"starting process {executablePath} {commandArguments}");
-
-
-            Console.WriteLine("\"{0}\" {1}", executablePath, commandArguments);
+            this.testOutputHelper.WriteLine($"starting process {executablePath} {commandArguments}");
+            this.testOutputHelper.WriteLine("\"{0}\" {1}", executablePath, commandArguments);
 
             using (Process process = new Process())
             {
@@ -48,6 +70,7 @@ namespace TechTalk.SpecFlow.Specs.Drivers
                             else
                             {
                                 output.AppendLine(e.Data);
+                                this.testOutputHelper.WriteLine(e.Data);
                             }
                         };
 
@@ -60,6 +83,7 @@ namespace TechTalk.SpecFlow.Specs.Drivers
                             else
                             {
                                 error.AppendLine(e.Data);
+                                this.testOutputHelper.WriteLine(e.Data);
                             }
                         };
 
@@ -74,11 +98,8 @@ namespace TechTalk.SpecFlow.Specs.Drivers
                     }
                 }
 
-                ConsoleOutput = output.ToString();
-                Console.WriteLine(output);
-
-                ConsoleError = error.ToString();
-                Console.WriteLine(error);
+                this.ConsoleOutput = output.ToString();
+                this.ConsoleError = error.ToString();
 
                 return process.ExitCode;
             }

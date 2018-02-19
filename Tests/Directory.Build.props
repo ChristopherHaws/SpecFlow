@@ -1,6 +1,6 @@
 <Project>
 
-  <Import Project="$(MSBuildThisFileDirectory)\..\Directory.Build.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\Directory.Build.props" />
   
   <PropertyGroup>
     <!--
@@ -10,10 +10,10 @@
     <GenerateResourceNeverLockTypeAssemblies>true</GenerateResourceNeverLockTypeAssemblies>
   </PropertyGroup>
   
-  <Import Project="$(MSBuildThisFileDirectory)\..\SpecFlow.Build.Tasks\build\SpecFlow.Build.Tasks.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\SpecFlow.Build.Tasks\build\SpecFlow.Build.Tasks.props" />
 
   <PropertyGroup>
-    <SpecFlowBuildTasksAssembly>$(MSBuildThisFileDirectory)\..\SpecFlow.Build.Tasks\bin\$(Configuration)\$(SpecFlowBuildTasksTFM)\SpecFlow.Build.Tasks.dll</SpecFlowBuildTasksAssembly>
+    <SpecFlowBuildTasksAssembly>$(MSBuildThisFileDirectory)..\SpecFlow.Build.Tasks\bin\$(Configuration)\$(SpecFlowBuildTasksTFM)\SpecFlow.Build.Tasks.dll</SpecFlowBuildTasksAssembly>
   </PropertyGroup>
 
 </Project>
