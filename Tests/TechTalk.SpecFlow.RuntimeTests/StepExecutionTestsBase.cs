@@ -1,19 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Reflection;
 using BoDi;
 using Moq;
-using Xunit;
 using TechTalk.SpecFlow.Bindings;
 using TechTalk.SpecFlow.Bindings.Discovery;
 using TechTalk.SpecFlow.Bindings.Reflection;
 using TechTalk.SpecFlow.Configuration;
 using TechTalk.SpecFlow.Infrastructure;
 using TechTalk.SpecFlow.Tracing;
-using TechTalk.SpecFlow.Utils;
 using MockRepository = Rhino.Mocks.MockRepository;
-using ScenarioExecutionStatus = TechTalk.SpecFlow.ScenarioExecutionStatus;
 
 namespace TechTalk.SpecFlow.RuntimeTests
 {
