@@ -5,10 +5,14 @@
     <IsPackable>false</IsPackable>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <DefaultItemExcludes>
+      $(DefaultItemExcludes);
+      Data\**\*;
+    </DefaultItemExcludes>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
     <PackageReference Include="FluentAssertions" Version="4.19.4" />
     <PackageReference Include="Moq" Version="4.7.99" />
     <PackageReference Include="RhinoMocks" Version="3.6.1" />
@@ -31,8 +35,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\**\*" />
-    <SpecFlowFeatureFiles Remove="Data\**\*" />
     <None Include="Data\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
